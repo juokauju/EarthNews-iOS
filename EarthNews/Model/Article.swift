@@ -2,7 +2,7 @@
 //  Article.swift
 //  EarthNews
 //
-//  Created by jimi bird on 2022-10-05.
+//  Created by Justina Siaulyte on 2022-10-05.
 //
 
 
@@ -40,3 +40,6 @@ extension Source: Decodable {
     }
 }
 
+struct Wrapper: Decodable {
+    var articles: [Article]
+}
