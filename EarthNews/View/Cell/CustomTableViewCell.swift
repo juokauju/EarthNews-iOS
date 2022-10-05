@@ -33,3 +33,14 @@ class CustomTableViewCell: UITableViewCell {
     }
     
 }
+
+extension CustomTableViewCell {
+    func configure(with article: Article) {
+        title.text = article.title
+        subtitle.text = article.description
+        date.text = article.date.formatted()
+        source.text = article.source.name
+        
+        cellImage.image = article.articleImage
+    }
+}

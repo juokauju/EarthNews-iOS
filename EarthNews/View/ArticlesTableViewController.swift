@@ -38,6 +38,7 @@ class ArticlesTableViewController: UITableViewController {
             fatalError("Failed to add a custom cell to tableview.")
         }
         
+        cell.configure(with: dataModel.articles[indexPath.row])
        
         return cell
     }

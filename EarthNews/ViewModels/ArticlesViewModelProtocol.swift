@@ -13,3 +13,11 @@ protocol ArticlesViewModel {
     func fetchArticles()
 }
 
+extension ArticlesViewModel {
+    var actionOnDatabaseIcon: String {
+        get { "circle" }
+        set { }
+    }
+    
+    func actOnDatabase() { }
+}
