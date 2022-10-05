@@ -1,5 +1,5 @@
 //
-//  ArticlesViewModel.swift
+//  ArticlesViewModelProtocol.swift
 //  EarthNews
 //
 //  Created by Justina Siaulyte on 2022-09-30.

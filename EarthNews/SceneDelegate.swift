@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  EarthNews
 //
-//  Created by jimi bird on 2022-09-30.
+//  Created by Justina Siaulyte on 2022-09-30.
 //
 
 import UIKit
