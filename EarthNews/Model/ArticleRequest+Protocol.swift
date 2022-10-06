@@ -1,5 +1,5 @@
 //
-//  ArticleRequest+Protocol.swift
+//  ArticlesRequest+Protocol.swift
 //  EarthNews
 //
 //  Created by Justina Siaulyte on 2022-10-05.
@@ -9,36 +9,38 @@ import UIKit
 
 protocol NetworkRequest: AnyObject {
     associatedtype Model
-    func execute() async
+    func execute() async throws -> Model?
     func decode(_ data: Data) -> Model?
 }
 
 extension NetworkRequest {
-    fileprivate func load(_ url: URL) async throws {
+    fileprivate func load(_ url: URL) async throws -> Data {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
         let (data, response) = try await URLSession.shared.data(for: request)
         guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw FetchError.badUrl }
-        let _ = decode(data)
+        return data
     }
 }
 
-class ArticleRequest {
-    let resource: ArticleResource
+class ArticlesRequest {
+    let resource: ArticlesResource
     
-    init(resource: ArticleResource) {
+    init(resource: ArticlesResource) {
         self.resource = resource
     }
 }
 
-extension ArticleRequest: NetworkRequest {
-    func execute() async {
+extension ArticlesRequest: NetworkRequest {
+    func execute() async throws -> [Article]? {
         do {
-            try await load(resource.url)
+            let data = try await load(resource.url)
+            return decode(data)
         } catch {
             print(error)
         }
+        return nil
     }
     
     func decode(_ data: Data) -> [Article]? {
@@ -59,12 +61,14 @@ class ImageRequest {
 }
 
 extension ImageRequest: NetworkRequest {
-    func execute() async {
+    func execute() async throws -> UIImage? {
         do {
-            try await load(url)
+            let data = try await load(url)
+            return decode(data)
         } catch {
             print(error)
         }
+        return nil
     }
     
     func decode(_ data: Data) -> UIImage? {

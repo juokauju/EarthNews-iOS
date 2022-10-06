@@ -1,5 +1,5 @@
 //
-//  ArticleResource.swift
+//  ArticlesResource.swift
 //  EarthNews
 //
 //  Created by Justina Siaulyte on 2022-10-05.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArticleResource {
+struct ArticlesResource {
     let searchKeyword: String = "environment OR environmental OR climate OR pollution"
     var url: URL {
         var components = URLComponents(string: "https://gnews.io/api/v4/search?")!
