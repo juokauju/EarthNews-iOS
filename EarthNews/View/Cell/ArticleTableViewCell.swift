@@ -1,17 +1,17 @@
 //
-//  CustomTableViewCell.swift
+//  ArticleTableViewCell.swift
 //  EarthNews
 //
-//  Created by jimi bird on 2022-09-30.
+//  Created by Justina Siaulyte on 2022-09-30.
 //
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
-    static let identifier = "CustomTableViewCell"
+class ArticleTableViewCell: UITableViewCell {
+    static let identifier = "ArticleTableViewCell"
     
     static var nib: UINib {
-        UINib(nibName: "CustomTableViewCell", bundle: nil)
+        UINib(nibName: "ArticleTableViewCell", bundle: nil)
     }
 
     override func awakeFromNib() {
@@ -34,7 +34,7 @@ class CustomTableViewCell: UITableViewCell {
     
 }
 
-extension CustomTableViewCell {
+extension ArticleTableViewCell {
     func configure(with article: Article) {
         title.text = article.title
         subtitle.text = article.description

@@ -21,7 +21,7 @@ class ArticlesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(CustomTableViewCell.nib, forCellReuseIdentifier: CustomTableViewCell.identifier)
+        tableView.register(ArticleTableViewCell.nib, forCellReuseIdentifier: ArticleTableViewCell.identifier)
         
         dataModel.fetchArticles()
     }
@@ -33,8 +33,8 @@ class ArticlesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier,
-                                                       for: indexPath) as? CustomTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier,
+                                                       for: indexPath) as? ArticleTableViewCell else {
             fatalError("Failed to add a custom cell to tableview.")
         }
         
