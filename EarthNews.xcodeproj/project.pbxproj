@@ -21,6 +21,7 @@
 		7CA7181F28EDA5F6009325C1 /* ArticleRequest+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7181E28EDA5F6009325C1 /* ArticleRequest+Protocol.swift */; };
 		7CA7182128EDA9F7009325C1 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7182028EDA9F7009325C1 /* ErrorHandler.swift */; };
 		7CA7182328EE2335009325C1 /* LiveDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7182228EE2335009325C1 /* LiveDataViewModel.swift */; };
+		7CAB1DEE28F564580090F061 /* ArticleAndImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAB1DED28F564580090F061 /* ArticleAndImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		7CA7181E28EDA5F6009325C1 /* ArticleRequest+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleRequest+Protocol.swift"; sourceTree = "<group>"; };
 		7CA7182028EDA9F7009325C1 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		7CA7182228EE2335009325C1 /* LiveDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDataViewModel.swift; sourceTree = "<group>"; };
+		7CAB1DED28F564580090F061 /* ArticleAndImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleAndImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				7CA7181128ED7123009325C1 /* Article.swift */,
 				7CA7181C28EDA0DE009325C1 /* ArticlesResource.swift */,
 				7CA7181E28EDA5F6009325C1 /* ArticleRequest+Protocol.swift */,
+				7CAB1DED28F564580090F061 /* ArticleAndImageLoader.swift */,
 				7CA7182028EDA9F7009325C1 /* ErrorHandler.swift */,
 			);
 			path = Model;
@@ -205,6 +208,7 @@
 				7CA7182128EDA9F7009325C1 /* ErrorHandler.swift in Sources */,
 				7CA717FA28E6D9C2009325C1 /* SceneDelegate.swift in Sources */,
 				7CA7181D28EDA0DE009325C1 /* ArticlesResource.swift in Sources */,
+				7CAB1DEE28F564580090F061 /* ArticleAndImageLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

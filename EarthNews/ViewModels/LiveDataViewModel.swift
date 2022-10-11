@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class LiveDataViewModel: ArticlesViewModel {
     var articles: [Article] = []
@@ -15,11 +16,11 @@ class LiveDataViewModel: ArticlesViewModel {
     func fetchArticles() {
         guard !isLoading else { return }
         isLoading = true
-        let resource = ArticlesResource()
-        let request = ArticlesRequest(resource: resource)
-        
+
+        let loader = ArticleAndImageLoader()
         Task {
-            if let articles = try await request.execute() {
+            await loader.load()
+            if let articles = await loader.articles {
                 self.articles = articles
                 isLoading = false
             }
