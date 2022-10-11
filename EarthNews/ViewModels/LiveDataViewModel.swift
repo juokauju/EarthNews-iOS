@@ -19,7 +19,7 @@ class LiveDataViewModel: ArticlesViewModel {
 
         let loader = ArticleAndImageLoader()
         Task {
-            await loader.load()
+            await loader.loadArticlesAndImages()
             if let articles = await loader.articles {
                 self.articles = articles
                 isLoading = false
@@ -27,3 +27,4 @@ class LiveDataViewModel: ArticlesViewModel {
         }
     }
 }
+
