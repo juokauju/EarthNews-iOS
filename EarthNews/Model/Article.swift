@@ -17,7 +17,7 @@ struct Article {
     let date: Date
     let source: Source
     
-    var articleImage: UIImage?
+    var image: UIImage?
 }
 
 extension Article: Decodable {
