@@ -10,14 +10,17 @@ import UIKit
 actor ArticleAndImageLoader {
     var articles: [Article]?
     
-    func load() {
+    func loadArticlesAndImages() {
         guard let articles = articles else { return }
+        
 
         Task {
             try await loadArticles()
             for var article in articles {
-                let image = try await loadImage(url: article.imageUrl)
-                article.image = image
+                if let imageUrl = article.imageUrl {
+                    let image = try await loadImage(url: imageUrl)
+                    article.image = image
+                }
             }
         }
     }
