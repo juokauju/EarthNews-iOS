@@ -8,10 +8,10 @@
 import UIKit
 
 class ArticlesTableViewController: UITableViewController {
-    let dataModel: ArticlesViewModel
+    let viewModel: ArticlesViewModel
     
-    init(dataModel: ArticlesViewModel) {
-        self.dataModel = dataModel
+    init(viewModel: ArticlesViewModel) {
+        self.viewModel = viewModel
         super.init()
     }
     
@@ -23,13 +23,13 @@ class ArticlesTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(ArticleTableViewCell.nib, forCellReuseIdentifier: ArticleTableViewCell.identifier)
         
-        dataModel.fetchArticles()
+        viewModel.fetchArticles()
     }
 
     // MARK: TableView DataSource methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataModel.articles.count
+        return viewModel.articles.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,7 +38,7 @@ class ArticlesTableViewController: UITableViewController {
             fatalError("Failed to add a custom cell to tableview.")
         }
         
-        cell.configure(with: dataModel.articles[indexPath.row])
+        cell.configure(with: viewModel.articles[indexPath.row])
        
         return cell
     }
