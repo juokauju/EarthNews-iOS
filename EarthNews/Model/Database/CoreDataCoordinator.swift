@@ -45,10 +45,22 @@ class CoreDataCoordinator: DatabaseCoordinating {
     }
     
     private func save() {
-        do {
-            try context.save()
-        } catch {
-            print(error)
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                print(error)
+            }
         }
+    }
+}
+
+extension CoreDataCoordinator: DatabaseCoordinatorDelegate {
+    func didCreate(item: Article) {
+        create(item: item)
+    }
+    
+    func didDelete(item: Article) {
+        delete(item: item)
     }
 }
