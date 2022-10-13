@@ -15,7 +15,18 @@ protocol DatabaseCoordinating {
 }
 
 extension DatabaseCoordinating {
-    func fetch() -> [Entity] { }
+    func fetch() -> [Entity] { return [] }
     func create(item: Entity) { }
     func delete(item: Entity) { }
 }
+
+protocol DatabaseCoordinatorDelegate: AnyObject {
+    func didCreate(item: Article)
+    func didDelete(item: Article)
+}
+
+extension DatabaseCoordinatorDelegate {
+    func didCreate(item: Article) { }
+    func didDelete(item: Article) { }
+}
+

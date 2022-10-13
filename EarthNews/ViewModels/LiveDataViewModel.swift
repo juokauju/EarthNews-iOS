@@ -28,3 +28,17 @@ class LiveDataViewModel: ArticlesViewModel {
     }
 }
 
+extension LiveDataViewModel: DatabaseCoordinatorDelegate {
+    
+    weak var delegate: DatabaseCoordinatorDelegate? {
+        self
+    }
+    
+    var actionOnDatabaseIcon: String {
+        "heart"
+    }
+    
+    func actOnDatabase(with article: Article) {
+        delegate?.didCreate(item: article)
+    }
+}
