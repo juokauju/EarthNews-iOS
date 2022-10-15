@@ -35,7 +35,7 @@ extension LiveDataViewModel: DatabaseCoordinatorDelegate {
     }
     
     var actionOnDatabaseIcon: String {
-        "heart"
+        DatabaseActionIconString.save.rawValue
     }
     
     func actOnDatabase(with article: Article) {

@@ -30,3 +30,8 @@ extension DatabaseCoordinatorDelegate {
     func didDelete(item: Article) { }
 }
 
+enum DatabaseActionIconString: String {
+    case save = "square.and.arrow.up.circle"
+    case delete = "trash.circle"
+}
+
