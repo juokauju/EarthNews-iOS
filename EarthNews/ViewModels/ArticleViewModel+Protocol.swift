@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ArticlesViewModel {
+protocol ArticleViewModel {
     var articles: [Article] { get }
     func fetchArticles()
     

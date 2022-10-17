@@ -41,6 +41,6 @@ extension ArticleTableViewCell {
         date.text = article.date.formatted()
         source.text = article.source.name
         
-        cellImage.image = article.articleImage
+        cellImage.image = article.image
     }
 }

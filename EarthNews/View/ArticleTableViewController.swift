@@ -1,5 +1,5 @@
 //
-//  ArticlesTableViewController.swift
+//  ArticleTableViewController.swift
 //  EarthNews
 //
 //  Created by Justina Siaulyte on 2022-09-30.
@@ -7,20 +7,24 @@
 
 import UIKit
 
-class ArticlesTableViewController: UITableViewController {
-    let viewModel: ArticlesViewModel
+class ArticleTableViewController: UITableViewController {
+    var viewModel: ArticleViewModel?
     
-    init(viewModel: ArticlesViewModel) {
+    init(viewModel: ArticleViewModel) {
         self.viewModel = viewModel
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
+        }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let viewModel = viewModel else {
+            fatalError("The viewModel is not implemented")
+        }
+
         tableView.register(ArticleTableViewCell.nib, forCellReuseIdentifier: ArticleTableViewCell.identifier)
         
         viewModel.fetchArticles()
@@ -29,7 +33,7 @@ class ArticlesTableViewController: UITableViewController {
     // MARK: TableView DataSource methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.articles.count
+        return viewModel?.articles.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,6 +42,10 @@ class ArticlesTableViewController: UITableViewController {
             fatalError("Failed to add a custom cell to tableview.")
         }
         
+        guard let viewModel = viewModel else {
+            fatalError("The viewModel is not implemented")
+        }
+
         cell.configure(with: viewModel.articles[indexPath.row])
        
         return cell

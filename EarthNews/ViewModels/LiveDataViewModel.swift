@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class LiveDataViewModel: ArticlesViewModel {
+class LiveDataViewModel: ArticleViewModel {
     var articles: [Article] = []
     
     private var isLoading = false
