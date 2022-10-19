@@ -39,7 +39,3 @@ extension Source: Decodable {
         case name, url
     }
 }
-
-struct Wrapper: Decodable {
-    var articles: [Article]
-}

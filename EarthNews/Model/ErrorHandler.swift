@@ -7,8 +7,4 @@
 
 import Foundation
 
-enum FetchError: Error {
-    case badUrl
-    case badImage
-    
-}
+
