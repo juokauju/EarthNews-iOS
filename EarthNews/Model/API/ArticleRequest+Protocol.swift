@@ -43,7 +43,7 @@ extension ArticlesRequest: NetworkRequest {
             let data = try await load(resource.url)
             return decode(data)
         } catch {
-            print(error)
+            print("there is error in execute: \(error)")
         }
         return nil
     }
@@ -56,7 +56,7 @@ extension ArticlesRequest: NetworkRequest {
             let wrapper = try decoder.decode(Wrapper.self, from: data)
             return wrapper.articles
         } catch {
-            print(error)
+            print("there is error in decode: \(error)")
         }
         return nil
     }

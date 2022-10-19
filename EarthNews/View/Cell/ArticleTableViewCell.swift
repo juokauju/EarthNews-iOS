@@ -22,10 +22,11 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet var title: UILabel!
     @IBOutlet var subtitle: UILabel!
     @IBOutlet var source: UILabel!
-    
-    @IBOutlet var cellImage: UIImageView!
-    
 
+    @IBOutlet var cellImageView: UIImageView!
+    
+    @IBOutlet weak var databseIconImage: UIImageView!
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -35,14 +36,12 @@ class ArticleTableViewCell: UITableViewCell {
 }
 
 extension ArticleTableViewCell {
-    func configure(with article: Article) {
+    func configure(with article: ArticleWithImage) {
         title.text = article.title
         subtitle.text = article.description
         date.text = article.date.formatted()
         source.text = article.source.name
         
-        if let image = article.image {
-            cellImage.image = image
-        }
+        cellImageView.image = article.image
     }
 }

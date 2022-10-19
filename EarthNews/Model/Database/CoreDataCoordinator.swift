@@ -22,7 +22,7 @@ class CoreDataCoordinator: DatabaseCoordinating {
         context = container.viewContext
     }
     
-    func fetch() -> [Article] {
+    func fetch() -> [ArticleWithImage] {
         let request = ArticleCoreDataEntity.fetchRequest()
 
         Task {
@@ -33,12 +33,12 @@ class CoreDataCoordinator: DatabaseCoordinating {
         return []
     }
     
-    func create(item: Article) {
+    func create(item: ArticleWithImage) {
         item.convertToManagedObject(in: context)
         save()
     }
     
-    func delete(item: Article) {
+    func delete(item: ArticleWithImage) {
         let entity = item.convertToManagedObject(in: context)
         context.delete(entity)
         save()
@@ -56,11 +56,11 @@ class CoreDataCoordinator: DatabaseCoordinating {
 }
 
 extension CoreDataCoordinator: DatabaseCoordinatorDelegate {
-    func didCreate(item: Article) {
+    func didCreate(item: ArticleWithImage) {
         create(item: item)
     }
     
-    func didDelete(item: Article) {
+    func didDelete(item: ArticleWithImage) {
         delete(item: item)
     }
 }

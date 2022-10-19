@@ -21,13 +21,13 @@ extension DatabaseCoordinating {
 }
 
 protocol DatabaseCoordinatorDelegate: AnyObject {
-    func didCreate(item: Article)
-    func didDelete(item: Article)
+    func didCreate(item: ArticleWithImage)
+    func didDelete(item: ArticleWithImage)
 }
 
 extension DatabaseCoordinatorDelegate {
-    func didCreate(item: Article) { }
-    func didDelete(item: Article) { }
+    func didCreate(item: ArticleWithImage) { }
+    func didDelete(item: ArticleWithImage) { }
 }
 
 enum DatabaseActionIconString: String {

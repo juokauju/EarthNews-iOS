@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        let liveViewModel = LiveDataViewModel() as ArticleViewModel
+//        let liveViewModel = LiveDataArticleViewModel() as ArticleViewModel
 //        let liveVC = ArticleTableViewController(viewModel: liveViewModel)
 //
 //        let tabVC = UITabBarController(nibName: nil, bundle: nil)

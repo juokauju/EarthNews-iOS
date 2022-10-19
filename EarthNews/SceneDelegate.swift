@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-//        let liveViewModel = LiveDataViewModel() as ArticleViewModel
+//        let liveViewModel = LiveDataArticleViewModel() as ArticleViewModel
 //        let liveVC = ArticleTableViewController(viewModel: liveViewModel)
 //
 //        
