@@ -24,6 +24,11 @@ extension NetworkRequest {
     }
 }
 
+enum FetchError: Error {
+    case badUrl
+    case badImage
+}
+
 class ArticlesRequest {
     let resource: ArticlesResource
     
@@ -45,10 +50,15 @@ extension ArticlesRequest: NetworkRequest {
     
     func decode(_ data: Data) -> [Article]? {
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .secondsSince1970
+        decoder.dateDecodingStrategy = .iso8601
         
-        let wrapper = try? decoder.decode(Wrapper.self, from: data)
-        return wrapper?.articles
+        do {
+            let wrapper = try decoder.decode(Wrapper.self, from: data)
+            return wrapper.articles
+        } catch {
+            print(error)
+        }
+        return nil
     }
 }
 
@@ -66,7 +76,7 @@ extension ImageRequest: NetworkRequest {
             let data = try await load(url)
             return decode(data)
         } catch {
-            print(error)
+            print(FetchError.badImage)
         }
         return nil
     }

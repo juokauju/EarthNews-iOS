@@ -7,28 +7,26 @@
 
 import UIKit
 
-actor ArticleAndImageLoader {
-    var articles: [Article]?
-    
-    func loadArticlesAndImages() {
-        guard let articles = articles else { return }
+class ArticleAndImageLoader {
+    func loadArticlesAndImages() async throws -> [Article]? {
+        let articles = try await loadArticles()
         
-
-        Task {
-            try await loadArticles()
-            for var article in articles {
-                if let imageUrl = article.imageUrl {
-                    let image = try await loadImage(url: imageUrl)
-                    article.image = image
-                }
+        guard let articles = articles else { return nil }
+        
+        for var article in articles {
+            if let imageUrl = article.imageUrl {
+                let image = try await loadImage(url: imageUrl)
+                article.image = image
+                return articles
             }
         }
+        return nil
     }
     
-    private func loadArticles() async throws {
+    private func loadArticles() async throws -> [Article]? {
         let resource = ArticlesResource()
         let request = ArticlesRequest(resource: resource)
-        articles = try await request.execute()
+        return try await request.execute()
     }
     
     private func loadImage(url: URL) async throws -> UIImage? {
