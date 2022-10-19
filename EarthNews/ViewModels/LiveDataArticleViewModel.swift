@@ -10,7 +10,7 @@ import UIKit
 
 
 class LiveDataArticleViewModel: ArticleViewModel {
-    var articles: [Article] = []
+    var articles: [ArticleWithImage] = []
     
     private var isLoading = false
     
@@ -21,8 +21,10 @@ class LiveDataArticleViewModel: ArticleViewModel {
         Task {
             do {
                 let fetchedArticles = try await loader.loadArticlesAndImages()
+                
                 DispatchQueue.main.async {
                     if let articles = fetchedArticles {
+                        print("fetchArticles: \(String(describing: articles[0].image))")
                         self.articles = articles
                         self.isLoading = false
                         completion(true)
@@ -50,7 +52,7 @@ extension LiveDataArticleViewModel: DatabaseCoordinatorDelegate {
         DatabaseActionIconString.save.rawValue
     }
     
-    func actOnDatabase(with article: Article) {
+    func actOnDatabase(with article: ArticleWithImage) {
         delegate?.didCreate(item: article)
     }
 }

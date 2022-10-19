@@ -9,31 +9,21 @@ import UIKit
 import CoreData
 
 extension ArticleCoreDataEntity {
-    func convertToArticle() -> Article {
+    func convertToArticle() -> ArticleWithImage {
         guard let title = title,
               let subtitle = subtitle,
               let content = content,
               let date = date,
               let url = url,
               let sourceUrl = sourceUrl,
-              let sourceName = sourceName else {
-            fatalError()
+              let sourceName = sourceName,
+              let image = image else {
+            fatalError("Failed to convert from database to ArticleWithImage")
         }
               
         let source = Source(name: sourceName, url: sourceUrl)
         
-        guard let image = image else {
-            return Article(
-                title: title,
-                description: subtitle,
-                content: content,
-                url: url,
-                imageUrl: nil,
-                date: date,
-                source: source
-            )
-        }
-        return Article(
+        return ArticleWithImage(
             title: title,
             description: subtitle,
             content: content,
@@ -46,7 +36,7 @@ extension ArticleCoreDataEntity {
     }
 }
 
-extension Article {
+extension ArticleWithImage {
     @discardableResult func convertToManagedObject(
         in context: NSManagedObjectContext) -> ArticleCoreDataEntity
     {
@@ -58,9 +48,7 @@ extension Article {
         managedObject.date = self.date
         managedObject.sourceName = self.source.name
         managedObject.sourceUrl = self.source.url
-        if let image = self.image {
-            managedObject.image = image
-        }
+        managedObject.image = image
         return managedObject
     }
 }

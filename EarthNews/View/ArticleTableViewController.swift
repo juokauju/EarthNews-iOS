@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArticleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ArticleTableViewController: UIViewController, UITableViewDelegate {
 
     let viewModel = LiveDataArticleViewModel()
     
@@ -30,6 +30,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         viewModel.fetchArticles(completion: { result in
             if result {
                 print("Articles succsessfully fetched.")
+                print(self.viewModel.articles[0].image)
                 self.view.addSubview(self.tableView)
             } else {
                 print("Articles failed to fetch.")
@@ -43,6 +44,9 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     // MARK: TableView DataSource methods
+}
+
+extension ArticleTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(viewModel.articles.count)
@@ -50,7 +54,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:ArticleTableViewCell.identifier,
                                                        for: indexPath) as? ArticleTableViewCell else {
             fatalError("Failed to add a custom cell to tableview.")
         }
@@ -62,6 +66,10 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         cell.configure(with: viewModel.articles[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
 }
 

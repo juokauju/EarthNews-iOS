@@ -8,11 +8,11 @@
 import Foundation
 
 protocol ArticleViewModel {
-    var articles: [Article] { get }
+    var articles: [ArticleWithImage] { get }
     func fetchArticles(completion: @escaping (Bool) -> ())
     
 //    MARK: Database actions
     
     var actionOnDatabaseIcon: String { get }
-    func actOnDatabase(with article: Article)
+    func actOnDatabase(with article: ArticleWithImage)
 }
