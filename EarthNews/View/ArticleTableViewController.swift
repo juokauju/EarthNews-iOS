@@ -7,47 +7,60 @@
 
 import UIKit
 
-class ArticleTableViewController: UITableViewController {
-    var viewModel: ArticleViewModel?
-    
-    init(viewModel: ArticleViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-        }
+class ArticleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    let viewModel = LiveDataArticleViewModel()
+    
+    private var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(ArticleTableViewCell.nib,
+                           forCellReuseIdentifier: ArticleTableViewCell.identifier)
+        return tableView
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let viewModel = viewModel else {
-            fatalError("The viewModel is not implemented")
-        }
 
-        tableView.register(ArticleTableViewCell.nib, forCellReuseIdentifier: ArticleTableViewCell.identifier)
-        
-        viewModel.fetchArticles()
+        tableView.dataSource = self
+        tableView.delegate = self
+//        guard let viewModel = viewModel else {
+//            fatalError("The viewModel is not implemented")
+//        }
+        viewModel.fetchArticles(completion: { result in
+            if result {
+                print("Articles succsessfully fetched.")
+                self.view.addSubview(self.tableView)
+            } else {
+                print("Articles failed to fetch.")
+            }
+        })
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
     }
 
     // MARK: TableView DataSource methods
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.articles.count ?? 0
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(viewModel.articles.count)
+        return viewModel.articles.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier,
                                                        for: indexPath) as? ArticleTableViewCell else {
             fatalError("Failed to add a custom cell to tableview.")
         }
         
-        guard let viewModel = viewModel else {
-            fatalError("The viewModel is not implemented")
-        }
-
+//        guard let viewModel = viewModel else {
+//            fatalError("The viewModel is not implemented")
+//        }
+        
         cell.configure(with: viewModel.articles[indexPath.row])
-       
+        
         return cell
     }
 }
