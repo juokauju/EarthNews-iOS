@@ -41,6 +41,8 @@ extension ArticleTableViewCell {
         date.text = article.date.formatted()
         source.text = article.source.name
         
-        cellImage.image = article.image
+        if let image = article.image {
+            cellImage.image = image
+        }
     }
 }

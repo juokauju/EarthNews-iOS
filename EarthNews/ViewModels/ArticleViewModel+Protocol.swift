@@ -9,7 +9,7 @@ import Foundation
 
 protocol ArticleViewModel {
     var articles: [Article] { get }
-    func fetchArticles()
+    func fetchArticles(completion: @escaping (Bool) -> ())
     
 //    MARK: Database actions
     
