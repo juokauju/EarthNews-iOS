@@ -8,6 +8,10 @@
 
 import UIKit
 
+struct Wrapper: Decodable {
+    let articles: [Article]
+}
+
 struct Article {
     let title: String
     let description: String
