@@ -19,14 +19,16 @@ extension NetworkRequest {
         request.httpMethod = "GET"
         
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw FetchError.badUrl }
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw NetworkError.badUrl }
         return data
     }
 }
 
-enum FetchError: Error {
+enum NetworkError: Error {
     case badUrl
-    case badImage
+    case loadingArticleRequestError
+    case loadingImageRequestError
+    case jsonDecodeError
 }
 
 class ArticlesRequest {
@@ -43,7 +45,7 @@ extension ArticlesRequest: NetworkRequest {
             let data = try await load(resource.url)
             return decode(data)
         } catch {
-            print("there is error in execute: \(error)")
+            print(NetworkError.loadingArticleRequestError)
         }
         return nil
     }
@@ -56,7 +58,7 @@ extension ArticlesRequest: NetworkRequest {
             let wrapper = try decoder.decode(Wrapper.self, from: data)
             return wrapper.articles
         } catch {
-            print("there is error in decode: \(error)")
+            print(NetworkError.jsonDecodeError)
         }
         return nil
     }
@@ -76,7 +78,7 @@ extension ImageRequest: NetworkRequest {
             let data = try await load(url)
             return decode(data)
         } catch {
-            print(FetchError.badImage)
+            print(NetworkError.loadingImageRequestError)
         }
         return nil
     }
