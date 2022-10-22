@@ -27,11 +27,9 @@ class LiveArticleViewController: UIViewController, UITableViewDelegate {
 
         viewModel.fetchArticles(completion: { result in
             if result {
-                print("Articles succsessfully fetched.")
-                print(self.viewModel.articles[0].image)
                 self.view.addSubview(self.tableView)
             } else {
-                print("Articles failed to fetch.")
+                fatalError("Articles was not fetched.")
             }
         })
     }
@@ -63,7 +61,7 @@ extension LiveArticleViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 180
     }
 }
 

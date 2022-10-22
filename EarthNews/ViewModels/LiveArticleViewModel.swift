@@ -24,7 +24,6 @@ class LiveArticleViewModel: ArticleViewModel {
                 
                 DispatchQueue.main.async {
                     if let articles = fetchedArticles {
-                        print("fetchArticles: \(String(describing: articles[0].image))")
                         self.articles = articles
                         self.isLoading = false
                         completion(true)

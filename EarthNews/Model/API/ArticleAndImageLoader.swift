@@ -22,7 +22,6 @@ actor ArticleAndImageLoader {
                 let articleWithImage = maker.create(from: article,
                                                     image: image ?? maker.noImageIcon)
                 articlesWithImages.append(articleWithImage)
-                print(articleWithImage)
             }
         }
         return articlesWithImages
