@@ -1,5 +1,5 @@
 //
-//  LiveDataArticleViewModel.swift
+//  LiveArticleViewModel.swift
 //  EarthNews
 //
 //  Created by Justina Siaulyte on 2022-10-05.
@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 
-class LiveDataArticleViewModel: ArticleViewModel {
+class LiveArticleViewModel: ArticleViewModel {
     var articles: [ArticleWithImage] = []
     
+    private let loader = ArticleAndImageLoader()
     private var isLoading = false
     
     func fetchArticles(completion: @escaping (Bool) -> ()) {
         guard !isLoading else { return }
         isLoading = true
-        let loader = ArticleAndImageLoader()
         Task {
             do {
                 let fetchedArticles = try await loader.loadArticlesAndImages()
@@ -42,7 +42,7 @@ enum LoadError: Error {
     case noArticlesInLoader
 }
 
-extension LiveDataArticleViewModel: DatabaseCoordinatorDelegate {
+extension LiveArticleViewModel: DatabaseCoordinatorDelegate {
     
     weak var delegate: DatabaseCoordinatorDelegate? {
         self

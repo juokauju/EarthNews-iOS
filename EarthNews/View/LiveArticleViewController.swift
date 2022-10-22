@@ -1,5 +1,5 @@
 //
-//  ArticleTableViewController.swift
+//  LiveArticleViewController.swift
 //  EarthNews
 //
 //  Created by Justina Siaulyte on 2022-09-30.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ArticleTableViewController: UIViewController, UITableViewDelegate {
+class LiveArticleViewController: UIViewController, UITableViewDelegate {
 
-    let viewModel = LiveDataArticleViewModel()
+    let viewModel = LiveArticleViewModel()
     
     private var tableView: UITableView = {
         let tableView = UITableView()
@@ -24,9 +24,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate {
 
         tableView.dataSource = self
         tableView.delegate = self
-//        guard let viewModel = viewModel else {
-//            fatalError("The viewModel is not implemented")
-//        }
+
         viewModel.fetchArticles(completion: { result in
             if result {
                 print("Articles succsessfully fetched.")
@@ -46,7 +44,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate {
     // MARK: TableView DataSource methods
 }
 
-extension ArticleTableViewController: UITableViewDataSource {
+extension LiveArticleViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(viewModel.articles.count)
@@ -58,10 +56,6 @@ extension ArticleTableViewController: UITableViewDataSource {
                                                        for: indexPath) as? ArticleTableViewCell else {
             fatalError("Failed to add a custom cell to tableview.")
         }
-        
-//        guard let viewModel = viewModel else {
-//            fatalError("The viewModel is not implemented")
-//        }
         
         cell.configure(with: viewModel.articles[indexPath.row])
         
