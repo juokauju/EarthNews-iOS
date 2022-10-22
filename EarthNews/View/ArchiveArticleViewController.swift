@@ -28,13 +28,7 @@ class ArchiveArticleViewController: UIViewController {
         tableView.delegate = self
 
         viewModel.fetchArticles(completion: { result in
-            if result {
-                print("Articles succsessfully fetched.")
-                print(self.viewModel.articles[0].image)
                 self.view.addSubview(self.tableView)
-            } else {
-                print("Articles failed to fetch.")
-            }
         })
     }
     
