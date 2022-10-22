@@ -17,20 +17,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AYE-Ox-5Eo">
-                        <rect key="frame" x="20" y="15" width="456" height="150"/>
+                        <rect key="frame" x="20" y="15" width="446" height="150"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2e2-bh-mo8">
-                                <rect key="frame" x="0.0" y="0.0" width="60" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="150"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vRm-Ut-8jy">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <rect key="frame" x="10" y="0.0" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="cJM-F2-Rgg"/>
-                                            <constraint firstAttribute="height" constant="60" id="rbo-oh-RoT"/>
+                                            <constraint firstAttribute="width" constant="30" id="cJM-F2-Rgg"/>
+                                            <constraint firstAttribute="height" constant="30" id="rbo-oh-RoT"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldB-Yp-1oK">
-                                        <rect key="frame" x="5" y="60" width="50" height="90"/>
+                                        <rect key="frame" x="0.0" y="30" width="50" height="120"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="qsS-JP-Jje">
-                                <rect key="frame" x="68" y="0.0" width="230" height="150"/>
+                                <rect key="frame" x="58" y="0.0" width="230" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bn-kr-D9x" userLabel="DateLabel">
                                         <rect key="frame" x="0.0" y="5" width="230" height="12"/>
@@ -76,8 +76,8 @@
                                     <constraint firstAttribute="bottom" secondItem="qmk-Bx-cod" secondAttribute="bottom" constant="5" id="poU-7I-a4w"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GA0-zd-Krh">
-                                <rect key="frame" x="306" y="0.0" width="150" height="150"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GA0-zd-Krh">
+                                <rect key="frame" x="296" y="0.0" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="GbO-o1-MVp"/>
                                     <constraint firstAttribute="height" constant="150" id="cnP-DH-m92"/>
