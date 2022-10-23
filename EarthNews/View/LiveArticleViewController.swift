@@ -39,8 +39,9 @@ class LiveArticleViewController: UIViewController, UITableViewDelegate {
         tableView.frame = view.bounds
     }
 
-    // MARK: TableView DataSource methods
 }
+
+// MARK: - TableView DataSource methods
 
 extension LiveArticleViewController: UITableViewDataSource {
     

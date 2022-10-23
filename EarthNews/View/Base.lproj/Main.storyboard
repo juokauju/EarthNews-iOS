@@ -24,10 +24,26 @@
             </objects>
             <point key="canvasLocation" x="2005.7971014492755" y="-7.3660714285714279"/>
         </scene>
+        <!--Archive Article View Controller-->
+        <scene sceneID="4u7-GS-gRO">
+            <objects>
+                <viewController id="oDb-T8-7JU" customClass="ArchiveArticleViewController" customModule="EarthNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zQ2-pi-Pk0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jIw-Mj-Ekj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aNl-DA-Lhk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9MZ-vn-o1l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2006" y="678"/>
+        </scene>
         <!--Item-->
         <scene sceneID="tXV-qN-FHD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rcm-hu-Uw8" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LiveNavController" automaticallyAdjustsScrollViewInsets="NO" id="Rcm-hu-Uw8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="IK6-97-yE5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jcd-Hz-gaB">
@@ -54,11 +70,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="Rcm-hu-Uw8" kind="relationship" relationship="viewControllers" id="ilZ-wQ-N1a"/>
+                        <segue destination="3zG-d7-XgA" kind="relationship" relationship="viewControllers" id="i1P-Mw-Kpp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFA-tV-MHf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="185.50724637681162" y="-7.3660714285714279"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="FMb-Fo-ICt">
+            <objects>
+                <navigationController storyboardIdentifier="ArchiveNavController" automaticallyAdjustsScrollViewInsets="NO" id="3zG-d7-XgA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="9XF-wS-If2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rni-hU-2As">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oDb-T8-7JU" kind="relationship" relationship="rootViewController" id="DBT-GG-EC3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dr3-i9-Fi2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096" y="678"/>
         </scene>
     </scenes>
     <resources>
