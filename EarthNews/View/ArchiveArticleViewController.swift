@@ -52,7 +52,7 @@ extension ArchiveArticleViewController: UITableViewDataSource {
             fatalError("Failed to add a custom cell to tableview.")
         }
         
-        cell.configure(with: viewModel.articles[indexPath.row])
+       cell.configure(with: viewModel.articles[indexPath.row], databaseIcon: viewModel.actionOnDatabaseIcon)
         
         return cell
     }

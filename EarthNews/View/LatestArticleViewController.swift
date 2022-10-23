@@ -1,5 +1,5 @@
 //
-//  LiveArticleViewController.swift
+//  LatestArticleViewController.swift
 //  EarthNews
 //
 //  Created by Justina Siaulyte on 2022-09-30.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class LiveArticleViewController: UIViewController, UITableViewDelegate {
+class LatestArticleViewController: UIViewController, UITableViewDelegate {
 
-    let viewModel = LiveArticleViewModel()
+    let viewModel = LatestArticleViewModel()
     
     private var tableView: UITableView = {
         let tableView = UITableView()
@@ -43,7 +43,7 @@ class LiveArticleViewController: UIViewController, UITableViewDelegate {
 
 // MARK: - TableView DataSource methods
 
-extension LiveArticleViewController: UITableViewDataSource {
+extension LatestArticleViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(viewModel.articles.count)

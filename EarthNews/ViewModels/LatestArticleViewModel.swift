@@ -1,5 +1,5 @@
 //
-//  LiveArticleViewModel.swift
+//  LatestArticleViewModel.swift
 //  EarthNews
 //
 //  Created by Justina Siaulyte on 2022-10-05.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-class LiveArticleViewModel: ArticleViewModel {
+class LatestArticleViewModel: ArticleViewModel {
     var articles: [ArticleWithImage] = []
     
     private let loader = ArticleAndImageLoader()
@@ -40,7 +40,7 @@ enum LoadError: Error {
     case noArticlesInLoader
 }
 
-extension LiveArticleViewModel: DatabaseCoordinatorDelegate {
+extension LatestArticleViewModel: DatabaseCoordinatorDelegate {
     
     weak var delegate: DatabaseCoordinatorDelegate? {
         self

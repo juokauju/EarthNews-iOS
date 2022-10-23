@@ -24,7 +24,7 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet var source: UILabel!
 
     @IBOutlet var cellImageView: UIImageView!
-    @IBOutlet weak var databseIconImage: UIImageView!
+    @IBOutlet weak var databseIconImageView: UIImageView!
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -42,6 +42,8 @@ extension ArticleTableViewCell {
         source.text = article.source.name
         
         cellImageView.image = article.image
-        databseIconImage.image = databaseIcon
+        databseIconImageView.image = databaseIcon
+        databseIconImageView.tintColor = .systemTeal
+        
     }
 }

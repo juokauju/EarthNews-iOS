@@ -31,7 +31,7 @@ extension DatabaseCoordinatorDelegate {
 }
 
 enum DatabaseActionIconString: String {
-    case save = "square.and.arrow.up.circle"
-    case delete = "trash.circle"
+    case save = "bookmark"
+    case delete = "trash"
 }
 

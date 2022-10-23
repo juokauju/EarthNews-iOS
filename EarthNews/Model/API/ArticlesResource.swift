@@ -8,7 +8,7 @@
 import Foundation
 
 struct ArticlesResource {
-    let searchKeyword: String = "environmental issues OR environmental issue OR environmental"
+    let searchKeyword: String = "(environmental AND issues) OR (environmental AND issue) OR environmental OR (climate AND change)"
     var url: URL {
         let token = "75f2032c80e2a80287125483cca822d2"
         var components = URLComponents(string: "https://gnews.io/api/v4/search?\(token)")!
