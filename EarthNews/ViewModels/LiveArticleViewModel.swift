@@ -5,7 +5,6 @@
 //  Created by Justina Siaulyte on 2022-10-05.
 //
 
-import Foundation
 import UIKit
 
 
@@ -47,11 +46,20 @@ extension LiveArticleViewModel: DatabaseCoordinatorDelegate {
         self
     }
     
-    var actionOnDatabaseIcon: String {
-        DatabaseActionIconString.save.rawValue
+    var actionOnDatabaseIcon: UIImage {
+        let iconString = DatabaseActionIconString.save.rawValue
+        let image = UIImage(systemName: iconString)
+        guard let image = image else {
+            fatalError("There is no image for database icon image in LiveArticleViewModel.")
+        }
+        return image
     }
     
     func actOnDatabase(with article: ArticleWithImage) {
         delegate?.didCreate(item: article)
+    }
+    
+    enum DatabaseDelegateError: Error {
+        case noImageForIcon
     }
 }

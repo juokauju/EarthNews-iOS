@@ -36,9 +36,8 @@ class ArchiveArticleViewController: UIViewController {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
-
-    // MARK: TableView DataSource methods
 }
+// MARK: - TableView DataSource methods
 
 extension ArchiveArticleViewController: UITableViewDataSource {
     

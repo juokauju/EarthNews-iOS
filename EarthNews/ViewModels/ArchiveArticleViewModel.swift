@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ArchiveArticleViewModel: ArticleViewModel {
     var articles: [ArticleWithImage] = []
@@ -24,8 +25,13 @@ class ArchiveArticleViewModel: ArticleViewModel {
 
 extension ArchiveArticleViewModel {
     
-    var actionOnDatabaseIcon: String {
-        DatabaseActionIconString.delete.rawValue
+    var actionOnDatabaseIcon: UIImage {
+        let iconString = DatabaseActionIconString.delete.rawValue
+        let image = UIImage(systemName: iconString)
+        guard let image = image else {
+            fatalError("There is no image for database icon image in ArchiveArticleViewModel.")
+        }
+        return image
     }
     
     func actOnDatabase(with article: ArticleWithImage) {

@@ -5,7 +5,7 @@
 //  Created by Justina Siaulyte on 2022-09-30.
 //
 
-import Foundation
+import UIKit
 
 protocol ArticleViewModel {
     var articles: [ArticleWithImage] { get }
@@ -13,6 +13,6 @@ protocol ArticleViewModel {
     
 //    MARK: Database actions
     
-    var actionOnDatabaseIcon: String { get }
+    var actionOnDatabaseIcon: UIImage { get }
     func actOnDatabase(with article: ArticleWithImage)
 }
