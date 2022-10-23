@@ -1,17 +1,15 @@
 //
-//  ArchiveArticleViewController.swift
+//  LatestArticleViewController.swift
 //  EarthNews
 //
-//  Created by Justina Siaulyte on 2022-10-22.
+//  Created by Justina Siaulyte on 2022-09-30.
 //
-
-import Foundation
 
 import UIKit
 
-class ArchiveArticleViewController: UIViewController {
+class LatestArticleViewController: UIViewController, UITableViewDelegate {
 
-    let viewModel = ArchiveArticleViewModel()
+    let viewModel = LatestArticleViewModel()
     
     private var tableView: UITableView = {
         let tableView = UITableView()
@@ -28,7 +26,11 @@ class ArchiveArticleViewController: UIViewController {
         tableView.delegate = self
 
         viewModel.fetchArticles(completion: { result in
+            if result {
                 self.view.addSubview(self.tableView)
+            } else {
+                fatalError("Articles was not fetched.")
+            }
         })
     }
     
@@ -36,10 +38,12 @@ class ArchiveArticleViewController: UIViewController {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
+
 }
+
 // MARK: - TableView DataSource methods
 
-extension ArchiveArticleViewController: UITableViewDataSource {
+extension LatestArticleViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(viewModel.articles.count)
@@ -58,12 +62,7 @@ extension ArchiveArticleViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 180
     }
-}
-
-extension ArchiveArticleViewController: UITableViewDelegate {
-   
-    
 }
 

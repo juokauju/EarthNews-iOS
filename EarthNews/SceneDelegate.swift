@@ -13,11 +13,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        if let tabBarController = window?.rootViewController as? UITabBarController {
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let liveVC = storyboard.instantiateViewController(withIdentifier: "LiveNavController")
+//            liveVC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 1)
+//            tabBarController.viewControllers?.append(liveVC)
+//
+//            let archiveVC = storyboard.instantiateViewController(withIdentifier: "ArchiveNavController")
+//            archiveVC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
+//            tabBarController.viewControllers?.append(archiveVC)
+//        }
+
+        
 //        let liveViewModel = LiveDataArticleViewModel() as ArticleViewModel
 //        let liveVC = ArticleTableViewController(viewModel: liveViewModel)
-//
-//        
-//
 //        if let windowScene = scene as? UIWindowScene {
 //                let window = UIWindow(windowScene: windowScene)
 //                window.rootViewController = liveVC
