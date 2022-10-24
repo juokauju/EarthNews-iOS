@@ -67,3 +67,8 @@ extension ArchiveArticleViewController: UITableViewDelegate {
     
 }
 
+extension ArchiveArticleViewController: ArticleTableViewCellDelegate {
+    func didTapIcon(with article: ArticleWithImage) {
+        viewModel.actOnDatabase(with: article)
+    }
+}

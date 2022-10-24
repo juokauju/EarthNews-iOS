@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol ArticleTableViewCellDelegate: AnyObject {
+    func didTapIcon(with article: ArticleWithImage)
+}
+
 class ArticleTableViewCell: UITableViewCell {
+    weak var delegate: ArticleTableViewCellDelegate?
+    
     static let identifier = "ArticleTableViewCell"
     
     static var nib: UINib {
@@ -24,7 +30,9 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet var source: UILabel!
 
     @IBOutlet var cellImageView: UIImageView!
-    @IBOutlet weak var databseIconImageView: UIImageView!
+    @IBOutlet var databaseActionIcon: UIButton!
+    
+    private var article: ArticleWithImage?
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -32,9 +40,13 @@ class ArticleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-}
+    @IBAction func didTapIcon(_ sender: Any) {
+        if let article = article {
+            delegate?.didTapIcon(with: article)
+        }
+    }
+    
 
-extension ArticleTableViewCell {
     func configure(with article: ArticleWithImage, databaseIcon: UIImage) {
         title.text = article.title
         subtitle.text = article.description
@@ -42,8 +54,10 @@ extension ArticleTableViewCell {
         source.text = article.source.name
         
         cellImageView.image = article.image
-        databseIconImageView.image = databaseIcon
-        databseIconImageView.tintColor = .systemTeal
+        databaseActionIcon.imageView?.image = databaseIcon
+        databaseActionIcon.tintColor = .systemTeal
         
+        self.article = article
     }
+    
 }
