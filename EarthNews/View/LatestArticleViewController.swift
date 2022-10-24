@@ -51,18 +51,23 @@ extension LatestArticleViewController: UITableViewDataSource {
     }
     
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier:ArticleTableViewCell.identifier,
-                                                       for: indexPath) as? ArticleTableViewCell else {
-            fatalError("Failed to add a custom cell to tableview.")
-        }
-        
+       guard let cell = tableView.dequeueReusableCell(withIdentifier:ArticleTableViewCell.identifier,
+                                                      for: indexPath) as? ArticleTableViewCell else {
+           fatalError("Failed to add a custom cell to tableview.")
+       }
+       
        cell.configure(with: viewModel.articles[indexPath.row], databaseIcon: viewModel.actionOnDatabaseIcon)
-        
-        return cell
-    }
+       cell.delegate = self
+       return cell
+   }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
+        return 160
     }
 }
 
+extension LatestArticleViewController: ArticleTableViewCellDelegate {
+    func didTapIcon(with article: ArticleWithImage) {
+        viewModel.actOnDatabase(with: article)
+    }
+}
