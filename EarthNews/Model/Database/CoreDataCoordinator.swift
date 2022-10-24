@@ -59,8 +59,4 @@ extension CoreDataCoordinator: DatabaseCoordinatorDelegate {
     func didCreate(item: ArticleWithImage) {
         create(item: item)
     }
-    
-    func didDelete(item: ArticleWithImage) {
-        delete(item: item)
-    }
 }

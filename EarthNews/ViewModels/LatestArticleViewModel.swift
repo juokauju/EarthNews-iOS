@@ -43,7 +43,7 @@ enum LoadError: Error {
 extension LatestArticleViewModel: DatabaseCoordinatorDelegate {
     
     weak var delegate: DatabaseCoordinatorDelegate? {
-        self
+        CoreDataCoordinator()
     }
     
     var actionOnDatabaseIcon: UIImage {
@@ -57,9 +57,5 @@ extension LatestArticleViewModel: DatabaseCoordinatorDelegate {
     
     func actOnDatabase(with article: ArticleWithImage) {
         delegate?.didCreate(item: article)
-    }
-    
-    enum DatabaseDelegateError: Error {
-        case noImageForIcon
     }
 }
