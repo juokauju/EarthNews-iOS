@@ -3,7 +3,7 @@
     <entity name="ArticleCoreDataEntity" representedClassName=".ArticleCoreDataEntity" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="image" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="UIImage"/>
+        <attribute name="image" optional="YES" attributeType="Transformable" valueTransformerName="UIImageValueTransformer" customClassName="UIImage"/>
         <attribute name="sourceName" optional="YES" attributeType="String"/>
         <attribute name="sourceUrl" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="URL"/>
         <attribute name="subtitle" optional="YES" attributeType="String"/>

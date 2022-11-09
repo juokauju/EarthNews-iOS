@@ -12,6 +12,8 @@ class CoreDataCoordinator: DatabaseCoordinating {
     let container: NSPersistentContainer
     let context: NSManagedObjectContext
     
+    static var shared = CoreDataCoordinator()
+    
     init() {
         container = NSPersistentContainer(name: "CoreDataMain")
         container.loadPersistentStores { storeDescription, error in

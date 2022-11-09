@@ -9,22 +9,8 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-//var window: UIWindow?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        let liveViewModel = LiveDataArticleViewModel() as ArticleViewModel
-//        let liveVC = ArticleTableViewController(viewModel: liveViewModel)
-//
-//        let tabVC = UITabBarController(nibName: nil, bundle: nil)
-//            tabVC.setViewControllers([
-//              UINavigationController(rootViewController: liveVC)
-//            ], animated: false)
-//
-//            window = UIWindow(frame: UIScreen.main.bounds)
-//            window?.rootViewController = tabVC
-//            window?.makeKeyAndVisible()
         return true
     }
 
