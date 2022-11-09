@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="30" height="150"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtA-69-0ap">
-                                        <rect key="frame" x="0.0" y="20" width="30" height="30"/>
+                                        <rect key="frame" x="0.0" y="25" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="NZy-fm-Fw3"/>
                                             <constraint firstAttribute="height" constant="30" id="QqY-Rd-euQ"/>
@@ -31,11 +31,11 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
                                         <connections>
-                                            <action selector="databaseIconTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Udf-iS-eab"/>
+                                            <action selector="didTapIcon:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JYa-lE-TF9"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldB-Yp-1oK">
-                                        <rect key="frame" x="0.0" y="50" width="30" height="100"/>
+                                        <rect key="frame" x="0.0" y="55" width="30" height="95"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="LtA-69-0ap" secondAttribute="trailing" id="Rh0-4P-4Fj"/>
                                     <constraint firstItem="LtA-69-0ap" firstAttribute="leading" secondItem="2e2-bh-mo8" secondAttribute="leading" id="XO4-YL-QO4"/>
-                                    <constraint firstItem="LtA-69-0ap" firstAttribute="top" secondItem="2e2-bh-mo8" secondAttribute="top" constant="20" id="m4e-W6-aq8"/>
+                                    <constraint firstItem="LtA-69-0ap" firstAttribute="top" secondItem="2e2-bh-mo8" secondAttribute="top" constant="25" id="m4e-W6-aq8"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="qsS-JP-Jje" userLabel="Body">
@@ -142,7 +142,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellImageView" destination="GA0-zd-Krh" id="G7R-v9-Uto"/>
-                <outlet property="databaseActionIcon" destination="LtA-69-0ap" id="KCc-P6-J5G"/>
+                <outlet property="databaseActionButton" destination="LtA-69-0ap" id="KCc-P6-J5G"/>
                 <outlet property="date" destination="5Bn-kr-D9x" id="1vh-Fy-znK"/>
                 <outlet property="imageView" destination="GA0-zd-Krh" id="clS-7I-lpG"/>
                 <outlet property="source" destination="qmk-Bx-cod" id="C6m-BS-Zeh"/>
