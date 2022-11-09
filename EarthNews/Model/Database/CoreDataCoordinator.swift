@@ -15,6 +15,7 @@ class CoreDataCoordinator: DatabaseCoordinating {
     static var shared = CoreDataCoordinator()
     
     init() {
+        UIImageValueTransformer.register()
         container = NSPersistentContainer(name: "CoreDataMain")
         container.loadPersistentStores { storeDescription, error in
             if let error = error {
