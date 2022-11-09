@@ -11,7 +11,7 @@ import UIKit
 class ArchiveArticleViewModel: ArticleViewModel {
     var articles: [ArticleWithImage] = []
     
-    private let database = CoreDataCoordinator()
+    private let database = CoreDataCoordinator.shared
     
     func fetchArticles(completion: @escaping (Bool) -> ()) {
         let fetchedArticles = database.fetch()

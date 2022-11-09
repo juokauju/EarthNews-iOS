@@ -12,7 +12,10 @@ class CoreDataCoordinator: DatabaseCoordinating {
     let container: NSPersistentContainer
     let context: NSManagedObjectContext
     
+    static var shared = CoreDataCoordinator()
+    
     init() {
+        UIImageValueTransformer.register()
         container = NSPersistentContainer(name: "CoreDataMain")
         container.loadPersistentStores { storeDescription, error in
             if let error = error {

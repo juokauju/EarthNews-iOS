@@ -43,7 +43,7 @@ enum LoadError: Error {
 extension LatestArticleViewModel: DatabaseCoordinatorDelegate {
     
     weak var delegate: DatabaseCoordinatorDelegate? {
-        CoreDataCoordinator()
+        CoreDataCoordinator.shared
     }
     
     var actionOnDatabaseIcon: UIImage {

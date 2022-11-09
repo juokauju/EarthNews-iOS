@@ -30,34 +30,36 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet var source: UILabel!
 
     @IBOutlet var cellImageView: UIImageView!
-    @IBOutlet var databaseActionIcon: UIButton!
+    @IBOutlet var databaseActionButton: UIButton!
     
     private var article: ArticleWithImage?
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    @IBAction func didTapIcon(_ sender: Any) {
+
+    @IBAction func didTapIcon(_ sender: UIButton) {
         if let article = article {
             delegate?.didTapIcon(with: article)
         }
+        print("did tap button in cell")
     }
-    
+   
 
     func configure(with article: ArticleWithImage, databaseIcon: UIImage) {
+        self.article = article
+        
         title.text = article.title
         subtitle.text = article.description
         date.text = article.date.formatted()
         source.text = article.source.name
         
         cellImageView.image = article.image
-        databaseActionIcon.imageView?.image = databaseIcon
-        databaseActionIcon.tintColor = .systemTeal
-        
-        self.article = article
+        databaseActionButton.setImage(databaseIcon, for: .normal)
+        databaseActionButton.tintColor = .systemTeal
     }
     
 }

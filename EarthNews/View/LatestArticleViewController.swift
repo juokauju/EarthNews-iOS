@@ -38,13 +38,11 @@ class LatestArticleViewController: UIViewController, UITableViewDelegate {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
-
 }
 
 // MARK: - TableView DataSource methods
 
 extension LatestArticleViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(viewModel.articles.count)
         return viewModel.articles.count
