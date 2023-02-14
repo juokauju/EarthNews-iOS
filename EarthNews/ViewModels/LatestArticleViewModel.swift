@@ -21,7 +21,7 @@ class LatestArticleViewModel: ArticleViewModel {
             do {
                 let fetchedArticles = try await loader.loadArticlesAndImages()
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [unowned self] in
                     if let articles = fetchedArticles {
                         self.articles = articles
                         self.isLoading = false

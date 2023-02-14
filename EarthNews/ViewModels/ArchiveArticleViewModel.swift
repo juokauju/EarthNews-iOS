@@ -17,6 +17,7 @@ class ArchiveArticleViewModel: ArticleViewModel {
         let fetchedArticles = database.fetch()
         DispatchQueue.main.async {
             self.articles = fetchedArticles
+            print("view model calls fetching in database, result: \(fetchedArticles)")
             completion(true)
         }
         completion(false)
@@ -24,7 +25,6 @@ class ArchiveArticleViewModel: ArticleViewModel {
 }
 
 extension ArchiveArticleViewModel {
-    
     var actionOnDatabaseIcon: UIImage {
         let iconString = DatabaseActionIconString.delete.rawValue
         let image = UIImage(systemName: iconString)
