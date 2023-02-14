@@ -24,7 +24,6 @@ class ArchiveArticleViewModel: ArticleViewModel {
 }
 
 extension ArchiveArticleViewModel {
-    
     var actionOnDatabaseIcon: UIImage {
         let iconString = DatabaseActionIconString.delete.rawValue
         let image = UIImage(systemName: iconString)

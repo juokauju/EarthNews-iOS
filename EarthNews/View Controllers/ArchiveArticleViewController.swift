@@ -1,15 +1,17 @@
 //
-//  LatestArticleViewController.swift
+//  ArchiveArticleViewController.swift
 //  EarthNews
 //
-//  Created by Justina Siaulyte on 2022-09-30.
+//  Created by Justina Siaulyte on 2022-10-22.
 //
+
+import Foundation
 
 import UIKit
 
-class LatestArticleViewController: UIViewController, UITableViewDelegate {
+class ArchiveArticleViewController: UIViewController {
 
-    let viewModel = LatestArticleViewModel()
+    let viewModel = ArchiveArticleViewModel()
     
     private var tableView: UITableView = {
         let tableView = UITableView()
@@ -26,11 +28,7 @@ class LatestArticleViewController: UIViewController, UITableViewDelegate {
         tableView.delegate = self
 
         viewModel.fetchArticles(completion: { result in
-            if result {
                 self.view.addSubview(self.tableView)
-            } else {
-                fatalError("Articles was not fetched.")
-            }
         })
     }
     
@@ -39,32 +37,37 @@ class LatestArticleViewController: UIViewController, UITableViewDelegate {
         tableView.frame = view.bounds
     }
 }
-
 // MARK: - TableView DataSource methods
 
-extension LatestArticleViewController: UITableViewDataSource {
+extension ArchiveArticleViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(viewModel.articles.count)
         return viewModel.articles.count
     }
     
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(withIdentifier:ArticleTableViewCell.identifier,
-                                                      for: indexPath) as? ArticleTableViewCell else {
-           fatalError("Failed to add a custom cell to tableview.")
-       }
-       
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:ArticleTableViewCell.identifier,
+                                                       for: indexPath) as? ArticleTableViewCell else {
+            return UITableViewCell() 
+        }
+        
        cell.configure(with: viewModel.articles[indexPath.row], databaseIcon: viewModel.actionOnDatabaseIcon)
-       cell.delegate = self
-       return cell
-   }
+        
+        return cell
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return 200
     }
 }
 
-extension LatestArticleViewController: ArticleTableViewCellDelegate {
+extension ArchiveArticleViewController: UITableViewDelegate {
+   
+    
+}
+
+extension ArchiveArticleViewController: ArticleTableViewCellDelegate {
     func didTapIcon(with article: ArticleWithImage) {
         viewModel.actOnDatabase(with: article)
     }
