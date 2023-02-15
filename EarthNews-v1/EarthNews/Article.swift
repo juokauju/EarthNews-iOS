@@ -7,72 +7,43 @@
 
 import Foundation
 
-struct Root {
-    var response: Response
-}
-
-struct Response {
-    var results: Results
-}
-
-struct Results {
-    var articles: [[String: Article]]
-}
-
 struct Article {
     var id: String
     var date: Date
     var title: String
     var webUrl: URL
-    var fields: Fields
-    var tags: Tags
+    var additionalInfo: AdditionalInfo?
+    var tags: [Tag]
 }
 
-struct Fields {
+struct AdditionalInfo {
     var subtitle: String
     var body: String
     var thumbnail: String
 }
 
-struct Tags {
+struct Tag {
     var author: String
 }
 
-// MARK: - Coding Keys
-extension Root: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case response
-    }
-}
-
-extension Response: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case results
-    }
-}
-
-extension Results: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case articles = ""
-    }
-}
-
+// MARK: - Decodable, Coding Keys
 extension Article: Decodable {
     enum CodingKeys: String, CodingKey {
-        case id, webUrl, fields, tags
+        case id, webUrl, tags
+        case additionalInfo = "fields"
         case date = "webPublicationDate"
         case title = "webTitle"
     }
 }
 
-extension Fields: Decodable {
+extension AdditionalInfo: Decodable {
     enum CodingKeys: String, CodingKey {
         case subtitle = "trailText"
         case body, thumbnail
     }
 }
 
-extension Tags: Decodable {
+extension Tag: Decodable {
     enum CodingKeys: String, CodingKey {
         case author = "webTitle"
     }

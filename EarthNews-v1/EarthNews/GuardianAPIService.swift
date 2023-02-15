@@ -28,13 +28,25 @@ struct GuardianResource {
         ]
         return components?.url
     }()
+    
+    func hardcodeURL() -> URL? {
+        let endpoint = "https://content.guardianapis.com/search?"
+        let showFields = "show-fields=thumbnail%2Cbody%2CtrailText&"
+        let showElement = "show-elements=image&"
+        let section = "section=environment&"
+        let tags = "show-tags=contributor&"
+        let apiKey = "api-key=bcf27734-9851-4cd0-a99d-894930ce07fd"
+        let urlString = endpoint + showFields + showElement + section + tags + apiKey
+        
+        return URL(string: urlString)
+    }
 }
 
 class GuardianAPIService {
     let resource = GuardianResource()
     
-    func fetch() async throws {
-        guard let url = resource.url else { throw NetworkError.urlError }
+    func fetchArticles() async throws {
+        guard let url = resource.hardcodeURL() else { throw NetworkError.urlError }
         
         do {
             let data = try await load(url)
@@ -47,6 +59,7 @@ class GuardianAPIService {
     
     func load(_ url: URL) async throws -> Data {
         var request = URLRequest(url: url)
+        print(url)
         request.httpMethod = "GET"
         
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -60,7 +73,7 @@ class GuardianAPIService {
 
         do {
             let root = try decoder.decode(Root.self, from: data)
-            print(root.response.results.articles)
+            print(root.response.results)
         } catch {
             print(error)
         }

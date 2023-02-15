@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         Task {
-            try await service.fetch()
+            try await service.fetchArticles()
         }
         
         view.addSubview(articleView)
