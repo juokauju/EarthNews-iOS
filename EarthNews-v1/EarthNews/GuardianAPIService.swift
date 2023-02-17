@@ -45,16 +45,16 @@ struct GuardianResource {
 class GuardianAPIService {
     let resource = GuardianResource()
     
-    func fetchArticles() async throws {
+    func fetchArticles() async throws -> [Article]? {
         guard let url = resource.hardcodeURL() else { throw NetworkError.urlError }
         
         do {
             let data = try await load(url)
-            decode(data)
-  
+            return decode(data)
         } catch {
             print(NetworkError.serviceError)
         }
+        return nil
     }
     
     func load(_ url: URL) async throws -> Data {
@@ -67,16 +67,28 @@ class GuardianAPIService {
         return data
     }
     
-    func decode(_ data: Data) {
+    func decode(_ data: Data) -> [Article]? {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
 
         do {
             let root = try decoder.decode(Root.self, from: data)
-            print(root.response.results)
+            return root.response.results
         } catch {
             print(error)
         }
+        return nil
+    }
     
+    func fetchImage(with url: URL) async throws -> UIImage {
+        let noImageIcon = UIImage(systemName: "eye.slash")!
+        do {
+            let data = try await load(url)
+            let image = UIImage(data: data)
+            return image ?? noImageIcon
+        } catch {
+            print(NetworkError.serviceError)
+        }
+        return noImageIcon
     }
 }
