@@ -17,6 +17,7 @@
 		7C49FE3B299B93A200D9AE38 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C49FE3A299B93A200D9AE38 /* Article.swift */; };
 		7C49FE3F299CCCD600D9AE38 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C49FE3E299CCCD600D9AE38 /* Response.swift */; };
 		7C49FE41299CCFB900D9AE38 /* ArticleWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C49FE40299CCFB900D9AE38 /* ArticleWithImage.swift */; };
+		7CC9E46829A02FB500ABF736 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC9E46729A02FB500ABF736 /* ArticleViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		7C49FE3A299B93A200D9AE38 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		7C49FE3E299CCCD600D9AE38 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		7C49FE40299CCFB900D9AE38 /* ArticleWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWithImage.swift; sourceTree = "<group>"; };
+		7CC9E46729A02FB500ABF736 /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				7C49FE22299A83E700D9AE38 /* ViewController.swift */,
 				7C49FE33299A971800D9AE38 /* ArticleShortView.swift */,
 				7C49FE38299B8D4400D9AE38 /* GuardianAPIService.swift */,
+				7CC9E46729A02FB500ABF736 /* ArticleViewModel.swift */,
 				7C49FE3D299CCCC300D9AE38 /* Models */,
 				7C49FE37299B8A9C00D9AE38 /* Utils */,
 				7C49FE32299A95CF00D9AE38 /* Files */,
@@ -179,6 +182,7 @@
 				7C49FE3F299CCCD600D9AE38 /* Response.swift in Sources */,
 				7C49FE3B299B93A200D9AE38 /* Article.swift in Sources */,
 				7C49FE39299B8D4400D9AE38 /* GuardianAPIService.swift in Sources */,
+				7CC9E46829A02FB500ABF736 /* ArticleViewModel.swift in Sources */,
 				7C49FE36299B82CF00D9AE38 /* Public properties.swift in Sources */,
 				7C49FE1F299A83E700D9AE38 /* AppDelegate.swift in Sources */,
 			);

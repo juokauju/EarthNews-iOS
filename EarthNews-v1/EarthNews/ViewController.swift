@@ -11,14 +11,24 @@ class ViewController: UIViewController {
     
     let articleView = ArticleShortView()
     let service = GuardianAPIService()
+    
+    private var articles: [ArticleViewModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Task {
-            try await service.fetchArticles()
+        loadArticles()
+        setupArticleView()
+    }
+
+    private func loadArticles() {
+        service.fetchArticleViewModels { articles in
+            self.articles = articles
+            DispatchQueue.main.async {
+                print("here is artciles count: \(articles.count)")
+            }
         }
-        
+    }
+    private func setupArticleView() {
         view.addSubview(articleView)
         NSLayoutConstraint.activate([
             articleView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -27,7 +37,5 @@ class ViewController: UIViewController {
             articleView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-
-
 }
 

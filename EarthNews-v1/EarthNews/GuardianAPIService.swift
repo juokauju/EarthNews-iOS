@@ -59,7 +59,6 @@ class GuardianAPIService {
     
     func load(_ url: URL) async throws -> Data {
         var request = URLRequest(url: url)
-        print(url)
         request.httpMethod = "GET"
         
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -80,8 +79,19 @@ class GuardianAPIService {
         return nil
     }
     
-    func fetchImage(with url: URL) async throws -> UIImage {
+    func fetchImage(with urlString: String?) async throws -> UIImage {
         let noImageIcon = UIImage(systemName: "eye.slash")!
+        
+        guard let urlString = urlString else {
+            return noImageIcon
+        }
+
+        let url = URL(string: urlString)
+        
+        guard let url = url else {
+            return noImageIcon
+        }
+
         do {
             let data = try await load(url)
             let image = UIImage(data: data)
@@ -90,5 +100,40 @@ class GuardianAPIService {
             print(NetworkError.serviceError)
         }
         return noImageIcon
+    }
+}
+
+extension GuardianAPIService {
+    func fetchArticleViewModels(completion: @escaping ([ArticleViewModel]) -> Void) {
+        Task {
+            do {
+                guard let articles = try await fetchArticles() else {
+                    completion([])
+                    return
+                }
+                var articleViewModels: [ArticleViewModel] = []
+                for article in articles {
+                    let imageUrl = article.additionalInfo?.thumbnail
+                    let image = try await fetchImage(with: imageUrl)
+                    
+                    let articleViewModel = ArticleViewModel(
+                        id: article.id,
+                        date: article.date,
+                        title: article.title,
+                        subtitle: article.additionalInfo?.subtitle,
+                        body: article.additionalInfo?.body,
+                        webUrl: article.webUrl,
+                        author: article.tags[0].author,
+                        image: image
+                    )
+                    
+                    articleViewModels.append(articleViewModel)
+                    
+                    if articles.count == articleViewModels.count {
+                        completion(articleViewModels)
+                    }
+                }
+            }
+        }
     }
 }
