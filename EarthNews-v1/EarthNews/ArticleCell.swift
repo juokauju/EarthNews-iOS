@@ -1,27 +1,34 @@
 //
-//  ArticleShortView.swift
+//  ArticleCell.swift
 //  EarthNews
 //
-//  Created by Justina Siaulyte on 2023-02-13.
+//  Created by Justina Siaulyte on 2023-02-19.
 //
 
 import UIKit
 
-import UIKit
-
-class ArticleShortView: UIView {
+class ArticleCell: UITableViewCell {
     
-    let dividerView = UIView()
-    let dateLabel = UILabel()
-    let imageView = UIImageView()
-    let titleLabel = UILabel()
-    let authorLabel = UILabel()
-    let subtitleLabel = UILabel()
-    let saveButton = UIButton()
+    // Static
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        style()
+    static let reuseID = "ArticleCell"
+    static let rowHeight: CGFloat = 400
+    
+    // Private
+    
+    private let dividerView = UIView()
+    private let dateLabel = UILabel()
+    private let articleImageView = UIImageView()
+    private let titleLabel = UILabel()
+    private let authorLabel = UILabel()
+    private let subtitleLabel = UILabel()
+    private let saveButton = UIButton()
+    
+    // Init
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
         layout()
     }
     
@@ -30,11 +37,10 @@ class ArticleShortView: UIView {
     }
 }
 
-extension ArticleShortView {
-    
-    private func style() {
+extension ArticleCell {
+    private func setup() {
         backgroundColor = .secondarySystemFill
-        translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = true
         
         dividerView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.backgroundColor = .systemGray4
@@ -44,33 +50,29 @@ extension ArticleShortView {
         dateLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         dateLabel.textColor = .tertiaryLabel
         dateLabel.textAlignment = .left
-        dateLabel.text = "XXXX/XX/XX XX:XX"
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 10
-        imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "IMG_0524")!
+        articleImageView.translatesAutoresizingMaskIntoConstraints = false
+        articleImageView.contentMode = .scaleAspectFill
+        articleImageView.layer.cornerRadius = 10
+        articleImageView.clipsToBounds = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.preferredFont(forTextStyle: .title3)
+        titleLabel.numberOfLines = 2
         titleLabel.textColor = .label
         titleLabel.textAlignment = .left
-        titleLabel.text = "Article title"
         
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
         authorLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         authorLabel.textColor = .tertiaryLabel
         authorLabel.textAlignment = .left
-        authorLabel.text = "Author"
         
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.font = UIFont.preferredFont(forTextStyle: .body)
         subtitleLabel.textColor = .secondaryLabel
         subtitleLabel.textAlignment = .left
         subtitleLabel.numberOfLines = 0
-        subtitleLabel.text = "hgjhdcf khdtdjytd ktfjytdytd jtydjyrtdyt tjydydty  tdjtdjgxgx kfht"
-        
+
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         if let image = UIImage(systemName: "square.and.arrow.down") {
             saveButton.setImage(image, for: .normal)
@@ -81,13 +83,13 @@ extension ArticleShortView {
     }
     
     private func layout() {
-        addSubview(dividerView)
-        addSubview(dateLabel)
-        addSubview(imageView)
-        addSubview(titleLabel)
-        addSubview(authorLabel)
-        addSubview(subtitleLabel)
-        addSubview(saveButton)
+        contentView.addSubview(dividerView)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(articleImageView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(authorLabel)
+        contentView.addSubview(subtitleLabel)
+        contentView.addSubview(saveButton)
         
         let imageViewWidth = screenWidth * 0.7
         
@@ -100,16 +102,14 @@ extension ArticleShortView {
             dateLabel.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 1),
             dateLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: dividerView.leadingAnchor, multiplier: 2),
             
+            articleImageView.heightAnchor.constraint(equalToConstant: imageViewWidth * 0.6),
+            articleImageView.topAnchor.constraint(equalToSystemSpacingBelow: dateLabel.bottomAnchor, multiplier: 1),
+            articleImageView.leadingAnchor.constraint(equalToSystemSpacingAfter: dividerView.leadingAnchor, multiplier: 1),
+            articleImageView.trailingAnchor.constraint(equalTo: dividerView.trailingAnchor, constant: -8),
             
-            imageView.widthAnchor.constraint(equalToConstant: imageViewWidth),
-            imageView.heightAnchor.constraint(equalToConstant: imageViewWidth * 0.6),
-            imageView.topAnchor.constraint(equalToSystemSpacingBelow: dateLabel.bottomAnchor, multiplier: 1),
-            imageView.leadingAnchor.constraint(equalToSystemSpacingAfter: dividerView.leadingAnchor, multiplier: 1),
-            imageView.trailingAnchor.constraint(equalTo: dividerView.trailingAnchor, constant: -8),
-            
-            titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 1),
-            titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: articleImageView.bottomAnchor, multiplier: 1),
+            titleLabel.leadingAnchor.constraint(equalTo: articleImageView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: articleImageView.trailingAnchor),
             
             authorLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 1),
             authorLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
@@ -120,9 +120,22 @@ extension ArticleShortView {
             
             saveButton.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 2),
             saveButton.leadingAnchor.constraint(equalToSystemSpacingAfter: subtitleLabel.leadingAnchor, multiplier: 0),
-            
-            
         ])
+    }
+}
+
+extension ArticleCell {
+    func configure(with vm: ArticleViewModel) {
+        dateLabel.text = vm.date.formatted()
+        articleImageView.image = vm.image
+        titleLabel.text = vm.title
+        subtitleLabel.text = vm.subtitle
+        
+        if !vm.authorTags.isEmpty {
+            authorLabel.text = vm.authorTags[0].author
+        } else {
+            authorLabel.text = "The Guardian"
+        }
     }
 }
 

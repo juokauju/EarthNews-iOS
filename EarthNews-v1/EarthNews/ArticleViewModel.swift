@@ -14,6 +14,6 @@ struct ArticleViewModel {
     let subtitle: String?
     let body: String?
     let webUrl: URL
-    let author: String
+    let authorTags: [Tag]
     let image: UIImage
 }

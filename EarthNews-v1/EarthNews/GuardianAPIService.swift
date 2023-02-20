@@ -123,7 +123,7 @@ extension GuardianAPIService {
                         subtitle: article.additionalInfo?.subtitle,
                         body: article.additionalInfo?.body,
                         webUrl: article.webUrl,
-                        author: article.tags[0].author,
+                        authorTags: article.tags,
                         image: image
                     )
                     
