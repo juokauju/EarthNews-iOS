@@ -129,18 +129,8 @@ extension ArticleCell {
         dateLabel.text = vm.date.formatted()
         articleImageView.image = vm.image
         titleLabel.text = vm.title
-        subtitleLabel.attributedText = makeSubtitleAttributed(vm: vm)
-        
-        if !vm.authorTags.isEmpty {
-            authorLabel.text = vm.authorTags[0].author
-        } else {
-            authorLabel.text = "The Guardian"
-        }
-    }
-    
-    func makeSubtitleAttributed(vm: ArticleViewModel) -> NSMutableAttributedString {
-        guard let htmlString = vm.subtitle else { return .init(string: "Invalid content") }
-        return htmlString.makeAttributedString()
+        authorLabel.text = vm.getAuthor()
+        subtitleLabel.attributedText = vm.getSubtitleAsNonHtml()
     }
 }
 
