@@ -44,8 +44,8 @@ extension ViewController {
     private func registerCell() {
         tableView.register(ArticleCell.self,
                            forCellReuseIdentifier: ArticleCell.reuseID)
-        tableView.estimatedRowHeight = 500
-        tableView.rowHeight = 400
+        tableView.estimatedRowHeight = 400
+        tableView.rowHeight = 430
         tableView.tableFooterView = UIView()
     }
     
@@ -73,7 +73,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        articleViewModels.count
     }
 }
 

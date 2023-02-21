@@ -12,7 +12,7 @@ class ArticleCell: UITableViewCell {
     // Static
     
     static let reuseID = "ArticleCell"
-    static let rowHeight: CGFloat = 400
+    static let rowHeight: CGFloat = 430
     
     // Private
     
@@ -129,7 +129,7 @@ extension ArticleCell {
         dateLabel.text = vm.date.formatted()
         articleImageView.image = vm.image
         titleLabel.text = vm.title
-        subtitleLabel.text = vm.subtitle
+        subtitleLabel.attributedText = makeSubtitleAttributed(vm: vm)
         
         if !vm.authorTags.isEmpty {
             authorLabel.text = vm.authorTags[0].author
@@ -137,5 +137,11 @@ extension ArticleCell {
             authorLabel.text = "The Guardian"
         }
     }
+    
+    func makeSubtitleAttributed(vm: ArticleViewModel) -> NSMutableAttributedString {
+        guard let htmlString = vm.subtitle else { return .init(string: "Invalid content") }
+        return htmlString.makeAttributedString()
+    }
 }
+
 
