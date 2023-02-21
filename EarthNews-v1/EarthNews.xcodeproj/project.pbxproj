@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C49FE1F299A83E700D9AE38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C49FE1E299A83E700D9AE38 /* AppDelegate.swift */; };
-		7C49FE23299A83E700D9AE38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C49FE22299A83E700D9AE38 /* ViewController.swift */; };
+		7C49FE23299A83E700D9AE38 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C49FE22299A83E700D9AE38 /* NewsFeedViewController.swift */; };
 		7C49FE28299A83E900D9AE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C49FE27299A83E900D9AE38 /* Assets.xcassets */; };
 		7C49FE2B299A83E900D9AE38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C49FE29299A83E900D9AE38 /* LaunchScreen.storyboard */; };
 		7C49FE36299B82CF00D9AE38 /* Public properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C49FE35299B82CF00D9AE38 /* Public properties.swift */; };
@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		7C49FE1B299A83E700D9AE38 /* EarthNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C49FE1E299A83E700D9AE38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7C49FE22299A83E700D9AE38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7C49FE22299A83E700D9AE38 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		7C49FE27299A83E900D9AE38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C49FE2A299A83E900D9AE38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C49FE2C299A83E900D9AE38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,10 +67,9 @@
 			isa = PBXGroup;
 			children = (
 				7C49FE1E299A83E700D9AE38 /* AppDelegate.swift */,
-				7C49FE22299A83E700D9AE38 /* ViewController.swift */,
-				7CC9E46B29A2C9F300ABF736 /* Cell */,
-				7C49FE38299B8D4400D9AE38 /* GuardianAPIService.swift */,
-				7CC9E46729A02FB500ABF736 /* ArticleViewModel.swift */,
+				7CC9E46E29A50CA500ABF736 /* NewsFeed */,
+				7CC9E46F29A50CCB00ABF736 /* Service */,
+				7CC9E47029A50CDB00ABF736 /* ViewModel */,
 				7C49FE3D299CCCC300D9AE38 /* Models */,
 				7C49FE37299B8A9C00D9AE38 /* Utils */,
 				7C49FE32299A95CF00D9AE38 /* Files */,
@@ -112,6 +111,31 @@
 				7CC9E46929A2C7A500ABF736 /* ArticleCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		7CC9E46E29A50CA500ABF736 /* NewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+				7C49FE22299A83E700D9AE38 /* NewsFeedViewController.swift */,
+				7CC9E46B29A2C9F300ABF736 /* Cell */,
+			);
+			name = NewsFeed;
+			sourceTree = "<group>";
+		};
+		7CC9E46F29A50CCB00ABF736 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7C49FE38299B8D4400D9AE38 /* GuardianAPIService.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		7CC9E47029A50CDB00ABF736 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7CC9E46729A02FB500ABF736 /* ArticleViewModel.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,7 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C49FE23299A83E700D9AE38 /* ViewController.swift in Sources */,
+				7C49FE23299A83E700D9AE38 /* NewsFeedViewController.swift in Sources */,
 				7C49FE3F299CCCD600D9AE38 /* Response.swift in Sources */,
 				7C49FE3B299B93A200D9AE38 /* Article.swift in Sources */,
 				7C49FE39299B8D4400D9AE38 /* GuardianAPIService.swift in Sources */,

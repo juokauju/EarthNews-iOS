@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NewsFeedViewController.swift
 //  EarthNews
 //
 //  Created by Justina Siaulyte on 2023-02-13.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NewsFeedViewController: UIViewController {
     
     let service = GuardianAPIService()
     
@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        self.title = "Earth News"
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - TableView setup
-extension ViewController {
+extension NewsFeedViewController {
     private func setupTableView() {
         tableView.backgroundColor = .systemBackground
         tableView.delegate = self
@@ -45,7 +46,7 @@ extension ViewController {
         tableView.register(ArticleCell.self,
                            forCellReuseIdentifier: ArticleCell.reuseID)
         tableView.estimatedRowHeight = 400
-        tableView.rowHeight = 430
+        tableView.rowHeight = 400
         tableView.tableFooterView = UIView()
     }
     
@@ -61,7 +62,7 @@ extension ViewController {
 }
 
 // MARK: - TableView Data Source
-extension ViewController: UITableViewDataSource {
+extension NewsFeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard !articleViewModels.isEmpty else { return UITableViewCell() }
         let article = articleViewModels[indexPath.row]
@@ -78,12 +79,12 @@ extension ViewController: UITableViewDataSource {
 }
 
 // MARK: - TableView Delegate
-extension ViewController: UITableViewDelegate {
+extension NewsFeedViewController: UITableViewDelegate {
  
 }
 
 // MARK: - Networking
-extension ViewController {
+extension NewsFeedViewController {
     private func loadArticles() {
         service.fetchArticleViewModels { articles in
             self.articleViewModels = articles

@@ -39,16 +39,16 @@ class ArticleCell: UITableViewCell {
 
 extension ArticleCell {
     private func setup() {
-        backgroundColor = .secondarySystemFill
+//        backgroundColor = .secondarySystemFill
         contentView.translatesAutoresizingMaskIntoConstraints = true
         
         dividerView.translatesAutoresizingMaskIntoConstraints = false
-        dividerView.backgroundColor = .systemGray4
+        dividerView.backgroundColor = .systemGreen
         dividerView.layer.cornerRadius = 2
         
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
-        dateLabel.textColor = .tertiaryLabel
+        dateLabel.textColor = .secondaryLabel
         dateLabel.textAlignment = .left
         
         articleImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +58,7 @@ extension ArticleCell {
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.preferredFont(forTextStyle: .title3)
-        titleLabel.numberOfLines = 2
+        titleLabel.numberOfLines = 0
         titleLabel.textColor = .label
         titleLabel.textAlignment = .left
         
@@ -73,13 +73,13 @@ extension ArticleCell {
         subtitleLabel.textAlignment = .left
         subtitleLabel.numberOfLines = 0
 
-        saveButton.translatesAutoresizingMaskIntoConstraints = false
-        if let image = UIImage(systemName: "square.and.arrow.down") {
-            saveButton.setImage(image, for: .normal)
-        }
-        saveButton.setTitle(" Save", for: .normal)
-        saveButton.setTitleColor(.systemGreen, for: .normal)
-        saveButton.tintColor = .systemGreen
+//        saveButton.translatesAutoresizingMaskIntoConstraints = false
+//        if let image = UIImage(systemName: "square.and.arrow.down") {
+//            saveButton.setImage(image, for: .normal)
+//        }
+//        saveButton.setTitle(" Save", for: .normal)
+//        saveButton.setTitleColor(.systemGreen, for: .normal)
+//        saveButton.tintColor = .systemGreen
     }
     
     private func layout() {
@@ -89,7 +89,7 @@ extension ArticleCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(authorLabel)
         contentView.addSubview(subtitleLabel)
-        contentView.addSubview(saveButton)
+//        contentView.addSubview(saveButton)
         
         let imageViewWidth = screenWidth * 0.7
         
@@ -107,7 +107,7 @@ extension ArticleCell {
             articleImageView.leadingAnchor.constraint(equalToSystemSpacingAfter: dividerView.leadingAnchor, multiplier: 1),
             articleImageView.trailingAnchor.constraint(equalTo: dividerView.trailingAnchor, constant: -8),
             
-            titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: articleImageView.bottomAnchor, multiplier: 1),
+            titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: articleImageView.bottomAnchor, multiplier: 2),
             titleLabel.leadingAnchor.constraint(equalTo: articleImageView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: articleImageView.trailingAnchor),
             
@@ -118,8 +118,8 @@ extension ArticleCell {
             subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             
-            saveButton.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 2),
-            saveButton.leadingAnchor.constraint(equalToSystemSpacingAfter: subtitleLabel.leadingAnchor, multiplier: 0),
+//            saveButton.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 2),
+//            saveButton.leadingAnchor.constraint(equalToSystemSpacingAfter: subtitleLabel.leadingAnchor, multiplier: 0),
         ])
     }
 }
