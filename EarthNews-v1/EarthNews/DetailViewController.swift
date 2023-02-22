@@ -7,37 +7,41 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DetailViewController: UIViewController, UIScrollViewDelegate {
     
-    let stackView = UIStackView()
-    let label = UILabel()
+
+    private let scrollView = UIScrollView()
+    private let detailView = DetailView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        style()
-        layout()
+        setupScrollView()
     }
 }
 
-extension ViewController {
-    private func style() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 20
+extension DetailViewController {
+    func setupScrollView() {
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Welcome"
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
-    }
-    
-    private func layout() {
-        stackView.addArrangedSubview(label)
-        
-        view.addSubview(stackView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(detailView)
         
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            detailView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            detailView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            detailView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            detailView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
+    }
+}
+
+extension DetailViewController {
+    func configure(with vm: ArticleViewModel) {
+        detailView.configure(with: vm)
     }
 }

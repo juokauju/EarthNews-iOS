@@ -17,7 +17,7 @@ class NewsFeedViewController: UIViewController {
     private var articleViewModels: [ArticleViewModel] = []
 
     // Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -45,8 +45,8 @@ extension NewsFeedViewController {
     private func registerCell() {
         tableView.register(ArticleCell.self,
                            forCellReuseIdentifier: ArticleCell.reuseID)
-        tableView.estimatedRowHeight = 400
-        tableView.rowHeight = 400
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.rowHeight = ArticleCell.rowHeight
         tableView.tableFooterView = UIView()
     }
     
@@ -80,7 +80,12 @@ extension NewsFeedViewController: UITableViewDataSource {
 
 // MARK: - TableView Delegate
 extension NewsFeedViewController: UITableViewDelegate {
- 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let articleViewModel = articleViewModels[indexPath.row]
+        let detailVC = DetailViewController()
+        detailVC.configure(with: articleViewModel)
+        navigationController?.pushViewController(detailVC, animated: false)
+    }
 }
 
 // MARK: - Networking

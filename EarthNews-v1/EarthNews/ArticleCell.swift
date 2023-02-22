@@ -12,7 +12,7 @@ class ArticleCell: UITableViewCell {
     // Static
     
     static let reuseID = "ArticleCell"
-    static let rowHeight: CGFloat = 430
+    static let rowHeight: CGFloat = 400
     
     // Private
     
@@ -23,6 +23,7 @@ class ArticleCell: UITableViewCell {
     private let authorLabel = UILabel()
     private let subtitleLabel = UILabel()
     private let saveButton = UIButton()
+    
     
     // Init
     
@@ -73,13 +74,13 @@ extension ArticleCell {
         subtitleLabel.textAlignment = .left
         subtitleLabel.numberOfLines = 0
 
-//        saveButton.translatesAutoresizingMaskIntoConstraints = false
-//        if let image = UIImage(systemName: "square.and.arrow.down") {
-//            saveButton.setImage(image, for: .normal)
-//        }
-//        saveButton.setTitle(" Save", for: .normal)
-//        saveButton.setTitleColor(.systemGreen, for: .normal)
-//        saveButton.tintColor = .systemGreen
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        if let image = UIImage(systemName: "square.and.arrow.down") {
+            saveButton.setImage(image, for: .normal)
+        }
+        saveButton.setTitle(" Save", for: .normal)
+        saveButton.setTitleColor(.systemGreen, for: .normal)
+        saveButton.tintColor = .systemGreen
     }
     
     private func layout() {
@@ -89,7 +90,7 @@ extension ArticleCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(authorLabel)
         contentView.addSubview(subtitleLabel)
-//        contentView.addSubview(saveButton)
+        contentView.addSubview(saveButton)
         
         let imageViewWidth = screenWidth * 0.7
         
@@ -118,8 +119,9 @@ extension ArticleCell {
             subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             
-//            saveButton.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 2),
-//            saveButton.leadingAnchor.constraint(equalToSystemSpacingAfter: subtitleLabel.leadingAnchor, multiplier: 0),
+            saveButton.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 2),
+            saveButton.leadingAnchor.constraint(equalToSystemSpacingAfter: subtitleLabel.leadingAnchor, multiplier: 0),
+            saveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
     }
 }
