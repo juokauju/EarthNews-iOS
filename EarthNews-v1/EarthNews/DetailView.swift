@@ -9,6 +9,7 @@ import UIKit
 
 class DetailView: UIView {
     
+    private let dividerView = UIView()
     private let titleLabel = UILabel()
     private let authorLabel = UILabel()
     private let dateLabel = UILabel()
@@ -34,6 +35,10 @@ class DetailView: UIView {
 extension DetailView {
     private func style() {
         translatesAutoresizingMaskIntoConstraints = false
+        
+        dividerView.translatesAutoresizingMaskIntoConstraints = false
+        dividerView.backgroundColor = .systemGreen
+        dividerView.layer.cornerRadius = 2
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
@@ -68,6 +73,7 @@ extension DetailView {
     }
     
     private func layout() {
+        addSubview(dividerView)
         addSubview(titleLabel)
         addSubview(authorLabel)
         addSubview(dateLabel)
@@ -76,9 +82,14 @@ extension DetailView {
         addSubview(urlLabel)
         
         NSLayoutConstraint.activate([
+            dividerView.heightAnchor.constraint(equalToConstant: 4),
+            dividerView.topAnchor.constraint(equalTo: topAnchor),
+            dividerView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: dividerView.trailingAnchor, multiplier: 1),
+            
             titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             
             authorLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 2),
             authorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
@@ -90,12 +101,12 @@ extension DetailView {
             
             articleImageView.heightAnchor.constraint(equalToConstant: screenWidth * 0.7),
             articleImageView.topAnchor.constraint(equalToSystemSpacingBelow: dateLabel.bottomAnchor, multiplier: 2),
-            articleImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            articleImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            articleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            articleImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
             bodyLabel.topAnchor.constraint(equalToSystemSpacingBelow: articleImageView.bottomAnchor, multiplier: 1),
-            bodyLabel.leadingAnchor.constraint(equalTo: articleImageView.leadingAnchor, constant: 8),
-            bodyLabel.trailingAnchor.constraint(equalTo: articleImageView.trailingAnchor, constant: -8),
+            bodyLabel.leadingAnchor.constraint(equalTo: articleImageView.leadingAnchor),
+            bodyLabel.trailingAnchor.constraint(equalTo: articleImageView.trailingAnchor),
             
             urlLabel.topAnchor.constraint(equalToSystemSpacingBelow: bodyLabel.bottomAnchor, multiplier: 3),
             urlLabel.leadingAnchor.constraint(equalTo: bodyLabel.leadingAnchor),

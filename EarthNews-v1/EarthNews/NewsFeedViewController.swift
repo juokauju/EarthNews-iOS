@@ -84,7 +84,7 @@ extension NewsFeedViewController: UITableViewDelegate {
         let articleViewModel = articleViewModels[indexPath.row]
         let detailVC = DetailViewController()
         detailVC.configure(with: articleViewModel)
-        navigationController?.pushViewController(detailVC, animated: false)
+        navigationController?.moveInViewControllerAnimated(detailVC)
     }
 }
 

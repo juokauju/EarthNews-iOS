@@ -16,6 +16,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScrollView()
+        setNavigationItem()
     }
 }
 
@@ -37,6 +38,16 @@ extension DetailViewController {
             detailView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             detailView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
+    }
+    
+    func setNavigationItem() {
+        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .done, target: self, action: #selector(barButtonItemTapped))
+        navigationController?.navigationBar.tintColor = .systemGreen
+        navigationItem.setLeftBarButton(barButtonItem, animated: false)
+    }
+    
+    @objc private func barButtonItemTapped() {
+        navigationController?.moveOutViewController()
     }
 }
 
