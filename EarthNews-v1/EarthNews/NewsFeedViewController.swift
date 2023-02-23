@@ -20,12 +20,9 @@ class NewsFeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadArticles()
         setupTableView()
         self.title = "Earth News"
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        loadArticles()
     }
 }
 

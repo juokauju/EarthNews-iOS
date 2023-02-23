@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol DetailViewDelegate: NSObject {
+    func urlButtonTapped()
+}
+
 class DetailView: UIView {
+    
+    weak var delegate: DetailViewDelegate?
     
     private let dividerView = UIView()
     private let titleLabel = UILabel()
@@ -15,7 +21,7 @@ class DetailView: UIView {
     private let dateLabel = UILabel()
     private let articleImageView = UIImageView()
     private let bodyLabel = UILabel()
-    private let urlLabel = UILabel()
+    private let urlButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,7 +64,6 @@ extension DetailView {
         
         articleImageView.translatesAutoresizingMaskIntoConstraints = false
         articleImageView.contentMode = .scaleAspectFill
-        articleImageView.layer.cornerRadius = 10
         articleImageView.clipsToBounds = true
         
         bodyLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -67,9 +72,11 @@ extension DetailView {
         bodyLabel.textAlignment = .left
         bodyLabel.numberOfLines = 0
         
-        urlLabel.translatesAutoresizingMaskIntoConstraints = false
-        urlLabel.font = UIFont.preferredFont(forTextStyle: .callout)
-        urlLabel.textAlignment = .left
+        urlButton.translatesAutoresizingMaskIntoConstraints = false
+        urlButton.setTitle("Read more...", for: .normal)
+        urlButton.setTitleColor(.link, for: .normal)
+        urlButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .callout)
+        urlButton.addTarget(self, action:#selector(self.urlButtonTapped), for: .touchUpInside)
     }
     
     private func layout() {
@@ -79,7 +86,7 @@ extension DetailView {
         addSubview(dateLabel)
         addSubview(articleImageView)
         addSubview(bodyLabel)
-        addSubview(urlLabel)
+        addSubview(urlButton)
         
         NSLayoutConstraint.activate([
             dividerView.heightAnchor.constraint(equalToConstant: 4),
@@ -99,23 +106,31 @@ extension DetailView {
             dateLabel.leadingAnchor.constraint(equalTo: authorLabel.leadingAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: authorLabel.trailingAnchor),
             
-            articleImageView.heightAnchor.constraint(equalToConstant: screenWidth * 0.7),
+            articleImageView.heightAnchor.constraint(equalToConstant: screenWidth * 0.5),
             articleImageView.topAnchor.constraint(equalToSystemSpacingBelow: dateLabel.bottomAnchor, multiplier: 2),
-            articleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            articleImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            articleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            articleImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             
             bodyLabel.topAnchor.constraint(equalToSystemSpacingBelow: articleImageView.bottomAnchor, multiplier: 1),
             bodyLabel.leadingAnchor.constraint(equalTo: articleImageView.leadingAnchor),
             bodyLabel.trailingAnchor.constraint(equalTo: articleImageView.trailingAnchor),
             
-            urlLabel.topAnchor.constraint(equalToSystemSpacingBelow: bodyLabel.bottomAnchor, multiplier: 3),
-            urlLabel.leadingAnchor.constraint(equalTo: bodyLabel.leadingAnchor),
-            urlLabel.trailingAnchor.constraint(equalTo: bodyLabel.trailingAnchor),
-            urlLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30)
+            urlButton.topAnchor.constraint(equalToSystemSpacingBelow: bodyLabel.bottomAnchor, multiplier: 1),
+            urlButton.leadingAnchor.constraint(equalTo: bodyLabel.leadingAnchor),
+            urlButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30),
+            urlButton.heightAnchor.constraint(equalToConstant: 16)
         ])
     }
 }
 
+// MARK: - Actions
+extension DetailView {
+    @objc private func urlButtonTapped(_ sender: UIButton) {
+        delegate?.urlButtonTapped()
+    }
+}
+
+// MARK: - Configuration
 extension DetailView {
     func configure(with vm: ArticleViewModel) {
         titleLabel.text = vm.title
@@ -123,6 +138,6 @@ extension DetailView {
         dateLabel.text = vm.date.formatted()
         articleImageView.image = vm.image
         bodyLabel.attributedText = vm.getBodyAsNonHtml()
-        urlLabel.text = "some url"
+        
     }
 }

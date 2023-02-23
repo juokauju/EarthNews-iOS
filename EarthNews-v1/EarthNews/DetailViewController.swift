@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UIScrollViewDelegate {
+class DetailViewController: UIViewController {
     
 
     private let scrollView = UIScrollView()
@@ -15,12 +15,17 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupScrollView()
-        setNavigationItem()
+        setup()
     }
 }
 
 extension DetailViewController {
+    func setup() {
+        setupScrollView()
+        setNavigationItem()
+        detailView.delegate = self
+    }
+    
     func setupScrollView() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -48,6 +53,12 @@ extension DetailViewController {
     
     @objc private func barButtonItemTapped() {
         navigationController?.moveOutViewController()
+    }
+}
+
+extension DetailViewController: DetailViewDelegate {
+    func urlButtonTapped() {
+        print("take me to web: present new view controller with webView")
     }
 }
 

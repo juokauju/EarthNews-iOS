@@ -22,7 +22,7 @@ extension String {
         
         attributedString.enumerateAttribute(NSAttributedString.Key.font, in: range) { value, range, pointer in
             
-            let replacementFont = UIFont.preferredFont(forTextStyle: .subheadline)
+            let replacementFont = UIFont.preferredFont(forTextStyle: .body)
             let textColor = UIColor.secondaryLabel
             
             let replacementAttribute = [NSAttributedString.Key.font: replacementFont, .foregroundColor: textColor]
