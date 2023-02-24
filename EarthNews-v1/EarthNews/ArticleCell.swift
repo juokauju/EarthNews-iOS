@@ -40,17 +40,18 @@ class ArticleCell: UITableViewCell {
 
 extension ArticleCell {
     private func setup() {
-//        backgroundColor = .secondarySystemFill
         contentView.translatesAutoresizingMaskIntoConstraints = true
         
         dividerView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.backgroundColor = .systemGreen
         dividerView.layer.cornerRadius = 2
+        dividerView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         dateLabel.textColor = .secondaryLabel
         dateLabel.textAlignment = .left
+        dateLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         articleImageView.translatesAutoresizingMaskIntoConstraints = false
         articleImageView.contentMode = .scaleAspectFill
@@ -62,17 +63,20 @@ extension ArticleCell {
         titleLabel.numberOfLines = 0
         titleLabel.textColor = .label
         titleLabel.textAlignment = .left
+        titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
         authorLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         authorLabel.textColor = .tertiaryLabel
         authorLabel.textAlignment = .left
+        authorLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        subtitleLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        subtitleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         subtitleLabel.textColor = .secondaryLabel
         subtitleLabel.textAlignment = .left
         subtitleLabel.numberOfLines = 0
+        subtitleLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
 
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         if let image = UIImage(systemName: "square.and.arrow.down") {
@@ -81,6 +85,7 @@ extension ArticleCell {
         saveButton.setTitle(" Save", for: .normal)
         saveButton.setTitleColor(.systemGreen, for: .normal)
         saveButton.tintColor = .systemGreen
+        saveButton.setContentHuggingPriority(.defaultHigh, for: .vertical)
     }
     
     private func layout() {
@@ -121,7 +126,8 @@ extension ArticleCell {
             
             saveButton.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 2),
             saveButton.leadingAnchor.constraint(equalToSystemSpacingAfter: subtitleLabel.leadingAnchor, multiplier: 0),
-            saveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+            saveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            saveButton.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 }

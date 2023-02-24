@@ -112,8 +112,8 @@ extension DetailView {
             articleImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             
             bodyLabel.topAnchor.constraint(equalToSystemSpacingBelow: articleImageView.bottomAnchor, multiplier: 1),
-            bodyLabel.leadingAnchor.constraint(equalTo: articleImageView.leadingAnchor),
-            bodyLabel.trailingAnchor.constraint(equalTo: articleImageView.trailingAnchor),
+            bodyLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            bodyLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             
             urlButton.topAnchor.constraint(equalToSystemSpacingBelow: bodyLabel.bottomAnchor, multiplier: 1),
             urlButton.leadingAnchor.constraint(equalTo: bodyLabel.leadingAnchor),

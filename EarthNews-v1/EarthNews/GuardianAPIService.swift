@@ -37,7 +37,6 @@ struct GuardianResource {
         let tags = "show-tags=contributor&"
         let apiKey = "api-key=bcf27734-9851-4cd0-a99d-894930ce07fd"
         let urlString = endpoint + showFields + showElement + section + tags + apiKey
-        print(urlString)
         return URL(string: urlString)
     }
 }

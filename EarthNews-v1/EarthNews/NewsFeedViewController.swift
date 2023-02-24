@@ -15,19 +15,24 @@ class NewsFeedViewController: UIViewController {
     
     private let tableView = UITableView()
     private var articleViewModels: [ArticleViewModel] = []
-
+    
     // Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         loadArticles()
-        setupTableView()
-        self.title = "Earth News"
     }
 }
 
 // MARK: - TableView setup
 extension NewsFeedViewController {
+    private func setup() {
+        self.title = "Earth News"
+        setupTableView()
+        setupRefreshControl()
+    }
+    
     private func setupTableView() {
         tableView.backgroundColor = .systemBackground
         tableView.delegate = self
@@ -56,6 +61,13 @@ extension NewsFeedViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    private func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .systemGreen
+        refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
 }
 
 // MARK: - TableView Data Source
@@ -66,7 +78,7 @@ extension NewsFeedViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reuseID, for: indexPath) as! ArticleCell
         cell.configure(with: article)
-
+        
         return cell
     }
     
@@ -82,6 +94,12 @@ extension NewsFeedViewController: UITableViewDelegate {
         let detailVC = DetailViewController()
         detailVC.configure(with: articleViewModel)
         navigationController?.moveInViewControllerAnimated(detailVC)
+    }
+}
+
+extension NewsFeedViewController {
+    @objc private func refreshContent() {
+        loadArticles()
     }
 }
 
