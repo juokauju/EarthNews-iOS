@@ -13,6 +13,8 @@ class DetailViewController: UIViewController {
     private let scrollView = UIScrollView()
     private let detailView = DetailView()
     
+    private var readMoreUrl: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -22,7 +24,7 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     func setup() {
         setupScrollView()
-        setNavigationItem()
+        setChevronBackNavigationButton()
         detailView.delegate = self
     }
     
@@ -44,26 +46,19 @@ extension DetailViewController {
             detailView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
     }
-    
-    func setNavigationItem() {
-        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .done, target: self, action: #selector(barButtonItemTapped))
-        navigationController?.navigationBar.tintColor = .systemGreen
-        navigationItem.setLeftBarButton(barButtonItem, animated: false)
-    }
-    
-    @objc private func barButtonItemTapped() {
-        navigationController?.moveOutViewController()
-    }
 }
 
 extension DetailViewController: DetailViewDelegate {
     func urlButtonTapped() {
-        print("take me to web: present new view controller with webView")
+        guard let url = readMoreUrl else { return }
+        let webVC = WebViewController(url: url)
+        navigationController?.moveInViewControllerAnimated(webVC)
     }
 }
 
 extension DetailViewController {
     func configure(with vm: ArticleViewModel) {
         detailView.configure(with: vm)
+        readMoreUrl = vm.webUrl
     }
 }

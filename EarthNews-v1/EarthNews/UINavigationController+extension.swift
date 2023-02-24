@@ -7,6 +7,18 @@
 
 import UIKit
 
+extension UIViewController {
+    func setChevronBackNavigationButton() {
+        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .done, target: self, action: #selector(barButtonItemTapped))
+            navigationController?.navigationBar.tintColor = .systemGreen
+        navigationItem.setLeftBarButton(barButtonItem, animated: false)
+    }
+    
+    @objc private func barButtonItemTapped() {
+        navigationController?.moveOutViewController()
+    }
+}
+
 extension UINavigationController {
     func moveInViewControllerAnimated(_ viewController: UIViewController) {
         let transition = CATransition()
@@ -27,5 +39,7 @@ extension UINavigationController {
         view.window!.layer.add(transition, forKey: kCATransition)
         popViewController(animated: false)
     }
+    
+   
 }
 
