@@ -14,6 +14,8 @@ class WebViewController: UIViewController {
     
     let url: URL
     
+    // Init
+    
     init(url: URL) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
@@ -22,6 +24,8 @@ class WebViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // Lifecycle
     
     override func loadView() {
         webView = WKWebView()
@@ -36,6 +40,7 @@ class WebViewController: UIViewController {
     }
 }
 
+// MARK: - Load
 extension WebViewController {
     private func loadUrl() {
         webView.load(URLRequest(url: url))
@@ -43,6 +48,7 @@ extension WebViewController {
     }
 }
 
+//MARK: - WKNavigationDelegate
 extension WebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         title = "The Guardian"

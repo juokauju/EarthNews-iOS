@@ -10,8 +10,8 @@ import UIKit
 class DetailViewController: UIViewController {
     
 
-    private let scrollView = UIScrollView()
-    private let detailView = DetailView()
+    @UsesAutoLayout private var scrollView = UIScrollView()
+    @UsesAutoLayout private var detailView = DetailView()
     
     private var readMoreUrl: URL?
     
@@ -29,8 +29,6 @@ extension DetailViewController {
     }
     
     func setupScrollView() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(scrollView)
         scrollView.addSubview(detailView)
         

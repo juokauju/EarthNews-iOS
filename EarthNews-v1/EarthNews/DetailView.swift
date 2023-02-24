@@ -15,13 +15,13 @@ class DetailView: UIView {
     
     weak var delegate: DetailViewDelegate?
     
-    private let dividerView = UIView()
-    private let titleLabel = UILabel()
-    private let authorLabel = UILabel()
-    private let dateLabel = UILabel()
-    private let articleImageView = UIImageView()
-    private let bodyLabel = UILabel()
-    private let urlButton = UIButton()
+    @UsesAutoLayout private var dividerView = UIView()
+    @UsesAutoLayout private var titleLabel = UILabel()
+    @UsesAutoLayout private var authorLabel = UILabel()
+    @UsesAutoLayout private var dateLabel = UILabel()
+    @UsesAutoLayout private var articleImageView = UIImageView()
+    @UsesAutoLayout private var bodyLabel = UILabel()
+    @UsesAutoLayout private var urlButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,39 +40,30 @@ class DetailView: UIView {
 
 extension DetailView {
     private func style() {
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        dividerView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.backgroundColor = .systemGreen
         dividerView.layer.cornerRadius = 2
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         titleLabel.numberOfLines = 0
         titleLabel.textColor = .label
         titleLabel.textAlignment = .center
         
-        authorLabel.translatesAutoresizingMaskIntoConstraints = false
         authorLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         authorLabel.textColor = .secondaryLabel
         authorLabel.textAlignment = .center
         
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         dateLabel.textColor = .secondaryLabel
         dateLabel.textAlignment = .center
         
-        articleImageView.translatesAutoresizingMaskIntoConstraints = false
         articleImageView.contentMode = .scaleAspectFill
         articleImageView.clipsToBounds = true
         
-        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
         bodyLabel.font = UIFont.preferredFont(forTextStyle: .body)
         bodyLabel.textColor = .label
         bodyLabel.textAlignment = .left
         bodyLabel.numberOfLines = 0
         
-        urlButton.translatesAutoresizingMaskIntoConstraints = false
         urlButton.setTitle("Read more...", for: .normal)
         urlButton.setTitleColor(.link, for: .normal)
         urlButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .callout)
@@ -112,8 +103,8 @@ extension DetailView {
             articleImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             
             bodyLabel.topAnchor.constraint(equalToSystemSpacingBelow: articleImageView.bottomAnchor, multiplier: 1),
-            bodyLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            bodyLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            bodyLabel.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor),
+            bodyLabel.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor),
             
             urlButton.topAnchor.constraint(equalToSystemSpacingBelow: bodyLabel.bottomAnchor, multiplier: 1),
             urlButton.leadingAnchor.constraint(equalTo: bodyLabel.leadingAnchor),

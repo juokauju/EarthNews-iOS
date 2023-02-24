@@ -12,8 +12,8 @@ class NewsFeedViewController: UIViewController {
     let service = GuardianAPIService()
     
     // Private
-    
-    private let tableView = UITableView()
+
+    @UsesAutoLayout private var tableView = UITableView()
     private var articleViewModels: [ArticleViewModel] = []
     
     // Lifecycle
@@ -53,7 +53,6 @@ extension NewsFeedViewController {
     }
     
     private func addTableViewConstraints() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -109,6 +108,7 @@ extension NewsFeedViewController {
         service.fetchArticleViewModels { articles in
             self.articleViewModels = articles
             DispatchQueue.main.async {
+                self.tableView.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
             }
         }
