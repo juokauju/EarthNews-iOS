@@ -81,11 +81,11 @@
 			isa = PBXGroup;
 			children = (
 				7C49FE1E299A83E700D9AE38 /* AppDelegate.swift */,
-				7CC9E46E29A50CA500ABF736 /* NewsFeed */,
-				7CC9E46F29A50CCB00ABF736 /* Service */,
-				7CC9E47029A50CDB00ABF736 /* ViewModel */,
-				7C49FE3D299CCCC300D9AE38 /* Models */,
-				7C49FE37299B8A9C00D9AE38 /* Utils */,
+				7C85E5C929B1022100C0646A /* Service */,
+				7C85E5C629B101C900C0646A /* NewsFeed */,
+				7C85E5CA29B1023600C0646A /* ViewModel */,
+				7C85E5CB29B1024A00C0646A /* Models */,
+				7C85E5CC29B1026100C0646A /* Utils */,
 				7C49FE32299A95CF00D9AE38 /* Files */,
 				7C9E49C829AD49AB0012D9C1 /* EarthNews.xcdatamodeld */,
 			);
@@ -102,7 +102,60 @@
 			name = Files;
 			sourceTree = "<group>";
 		};
-		7C49FE37299B8A9C00D9AE38 /* Utils */ = {
+		7C85E5C629B101C900C0646A /* NewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+				7C49FE22299A83E700D9AE38 /* NewsFeedViewController.swift */,
+				7C85E5C729B101D700C0646A /* Cell */,
+				7C85E5C829B101E400C0646A /* DetailView */,
+				7C9E49C029A8FF7B0012D9C1 /* WebViewController.swift */,
+			);
+			path = NewsFeed;
+			sourceTree = "<group>";
+		};
+		7C85E5C729B101D700C0646A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7CC9E46929A2C7A500ABF736 /* ArticleCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7C85E5C829B101E400C0646A /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				7CC9E47129A50D7A00ABF736 /* DetailViewController.swift */,
+				7CC9E47329A50DA800ABF736 /* DetailView.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		7C85E5C929B1022100C0646A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7C49FE38299B8D4400D9AE38 /* GuardianAPIService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		7C85E5CA29B1023600C0646A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7CC9E46729A02FB500ABF736 /* ArticleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7C85E5CB29B1024A00C0646A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7C49FE3A299B93A200D9AE38 /* Article.swift */,
+				7C49FE3E299CCCD600D9AE38 /* Response.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7C85E5CC29B1026100C0646A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				7C49FE35299B82CF00D9AE38 /* Public properties.swift */,
@@ -111,60 +164,7 @@
 				7C7C311329A69187004DF2A9 /* UINavigationController+extension.swift */,
 				7C9E49CB29AD4ABD0012D9C1 /* UIImageValueTransformer.swift */,
 			);
-			name = Utils;
-			sourceTree = "<group>";
-		};
-		7C49FE3D299CCCC300D9AE38 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				7C49FE3A299B93A200D9AE38 /* Article.swift */,
-				7C49FE3E299CCCD600D9AE38 /* Response.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		7C9E49C229A9015C0012D9C1 /* DetailView */ = {
-			isa = PBXGroup;
-			children = (
-				7CC9E47129A50D7A00ABF736 /* DetailViewController.swift */,
-				7CC9E47329A50DA800ABF736 /* DetailView.swift */,
-			);
-			name = DetailView;
-			sourceTree = "<group>";
-		};
-		7CC9E46B29A2C9F300ABF736 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				7CC9E46929A2C7A500ABF736 /* ArticleCell.swift */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		7CC9E46E29A50CA500ABF736 /* NewsFeed */ = {
-			isa = PBXGroup;
-			children = (
-				7C49FE22299A83E700D9AE38 /* NewsFeedViewController.swift */,
-				7CC9E46B29A2C9F300ABF736 /* Cell */,
-				7C9E49C229A9015C0012D9C1 /* DetailView */,
-				7C9E49C029A8FF7B0012D9C1 /* WebViewController.swift */,
-			);
-			name = NewsFeed;
-			sourceTree = "<group>";
-		};
-		7CC9E46F29A50CCB00ABF736 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				7C49FE38299B8D4400D9AE38 /* GuardianAPIService.swift */,
-			);
-			name = Service;
-			sourceTree = "<group>";
-		};
-		7CC9E47029A50CDB00ABF736 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				7CC9E46729A02FB500ABF736 /* ArticleViewModel.swift */,
-			);
-			name = ViewModel;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
